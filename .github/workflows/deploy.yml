@@ -34,11 +34,28 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm ci || npm install
+      - name: Environment info
+        run: |
+          echo "::group::Env"
+          node --version
+          npm --version
+          echo "::endgroup::"
+          echo "::group::Workspace"
+          pwd
+          ls -la
+          echo "::endgroup::"
+          echo "::group::package.json"
+          cat package.json
+          echo "::endgroup::"
 
-      - name: Build static site
-        run: npm run build
+      - name: Install dependencies (verbose)
+        run: npm ci --loglevel verbose || npm install --loglevel verbose
+
+      - name: Build static site (verbose)
+        run: |
+          echo "Building..."
+          npm run build
+          echo "Build exit: $LASTEXITCODE"
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
