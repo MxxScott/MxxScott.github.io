@@ -31,7 +31,7 @@ export function FlowSection({ id, children, first = false, last = false }) {
 
   return (
     <div id={id} ref={ref} className={`relative ${height}`}>
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-screen overflow-hidden supports-[height:100svh]:h-svh">
         <FlowCtx.Provider value={{ progress, first, last }}>{children}</FlowCtx.Provider>
       </div>
     </div>

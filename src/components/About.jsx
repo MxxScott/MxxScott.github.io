@@ -37,7 +37,7 @@ export default function About() {
                   {imgOk ? (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
-                      src="/portrait.jpg"
+                      src="/portrait.webp"
                       alt="David Lawal"
                       onError={() => setImgOk(false)}
                       className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"

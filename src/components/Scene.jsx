@@ -63,8 +63,8 @@ export default function Scene({ scrollRef }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 7], fov: 55 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.75]}
+      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >
       <ambientLight intensity={0.4} />
       <pointLight position={[6, 4, 6]} intensity={45} color="#ffffff" />
@@ -72,8 +72,8 @@ export default function Scene({ scrollRef }) {
 
       <Core scrollRef={scrollRef} />
 
-      <Sparkles count={130} scale={[14, 9, 10]} size={2.1} speed={0.35} opacity={0.5} color="#8ca6ff" />
-      <Stars radius={60} depth={40} count={1500} factor={3} saturation={0} fade speed={0.6} />
+      <Sparkles count={90} scale={[14, 9, 10]} size={2.1} speed={0.35} opacity={0.5} color="#8ca6ff" />
+      <Stars radius={60} depth={40} count={1000} factor={3} saturation={0} fade speed={0.6} />
     </Canvas>
   );
 }
