@@ -5,10 +5,10 @@ Build-time data pipeline for the portfolio.
 Pulls ALL public repositories for the user from the GitHub API and writes
 src/data/projects.json, which the Next.js build consumes.
 
-You control presentation from GitHub itself, via repo topics:
-  portfolio-flagship  -> that repo becomes the flagship card
-  portfolio-featured  -> repo appears in the featured grid
-  portfolio-hide      -> repo never appears anywhere
+Topic-based control (set these on your repos at github.com):
+  portfolio-flagship  -> becomes the flagship hero card
+  portfolio-featured  -> appears in the featured grid
+  portfolio-hide      -> never shown anywhere
 
 If no repo has portfolio-featured, the curated defaults below are used.
 If the API is unreachable, the previously committed projects.json is kept.
@@ -28,26 +28,26 @@ USERNAME = "MxxScott"
 DEFAULT_FLAGSHIP = "roar-frontend"
 OUTPUT = Path(__file__).resolve().parent.parent / "src" / "data" / "projects.json"
 
-# Excluded from the "all projects" list even if public
+# Always excluded from all lists
 EXCLUDE = {f"{USERNAME}.github.io", "Hello-World", "Test-Repo"}
 
 EMOJI_BY_LANGUAGE = {
-    "JavaScript": "🟨",
-    "TypeScript": "🔷",
-    "Vue": "💚",
-    "Python": "🐍",
-    "C": "⚙️",
+    "JavaScript": "\U0001f7e8",   # yellow square
+    "TypeScript": "\U0001f537",   # blue diamond
+    "Vue": "\U0001f49a",          # green heart
+    "Python": "\U0001f40d",       # snake
+    "C": "⚙️",          # gear
     "C++": "⚙️",
-    "HTML": "🌐",
-    "CSS": "🎨",
-    "Assembly": "🔩",
+    "HTML": "\U0001f310",         # globe
+    "CSS": "\U0001f3a8",          # palette
+    "Assembly": "\U0001f529",     # nut and bolt
 }
 
-# Curated presentation overrides (used for featured cards when available)
+# Curated presentation metadata for key repos
 CURATED = {
     "roar-frontend": {
         "title": "Roar — Article Builder",
-        "emoji": "🦁",
+        "emoji": "\U0001f981",    # lion
         "blurb": (
             "A content-creation platform frontend with a mobile-friendly "
             "article builder and a fully reworked UI system."
@@ -56,7 +56,7 @@ CURATED = {
     },
     "Onlearn": {
         "title": "Onlearn — E-Learning Platform",
-        "emoji": "🎓",
+        "emoji": "\U0001f393",   # graduation cap
         "blurb": (
             "A fully responsive landing experience for an online learning "
             "platform, documented like production code."
@@ -65,7 +65,7 @@ CURATED = {
     },
     "Wings-Height-Insurance-Brokers-Limited": {
         "title": "Wings Height Insurance Brokers",
-        "emoji": "🏢",
+        "emoji": "\U0001f3e2",   # office building
         "blurb": (
             "A complete multi-page corporate website — quotes, claims, "
             "bookings and service pages. Client-style delivery, framework-free."
@@ -74,7 +74,7 @@ CURATED = {
     },
     "Anime_Abyss": {
         "title": "Anime Abyss",
-        "emoji": "🌊",
+        "emoji": "\U0001f30a",   # wave
         "blurb": (
             "An anime discovery homepage with custom styling and scripted "
             "interactions on a modern Nuxt 4 foundation."
@@ -83,13 +83,13 @@ CURATED = {
     },
     "Maneyger-7.0": {
         "title": "Maneyger 7.0",
-        "emoji": "💰",
+        "emoji": "\U0001f4b0",   # money bag
         "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
         "stack": ["JavaScript", "Bootstrap", "CSS"],
     },
     "Inventory-Management-System": {
         "title": "Inventory Manager CLI",
-        "emoji": "📦",
+        "emoji": "\U0001f4e6",   # package
         "blurb": (
             "A stateful command-line inventory tracker — full CRUD, "
             "documented through every SDLC phase."
@@ -109,16 +109,17 @@ def api_get(path):
 
 
 def to_card(repo, curated=None):
-    """Shape a repo (plus optional curated overrides) into a card object."""
+    """Shape a repo (plus optional curated overrides) into a card dict."""
     curated = curated or {}
     language = repo.get("language") or ""
     topics = [t for t in repo.get("topics", []) if not t.startswith("portfolio-")]
+    raw_stack = ([language] if language else []) + topics[:4]
     return {
         "name": repo["name"],
         "title": curated.get("title", repo["name"].replace("-", " ").replace("_", " ")),
-        "emoji": curated.get("emoji", EMOJI_BY_LANGUAGE.get(language, "📁")),
+        "emoji": curated.get("emoji", EMOJI_BY_LANGUAGE.get(language, "\U0001f4c1")),
         "blurb": curated.get("blurb") or repo.get("description") or "",
-        "stack": curated.get("stack") or ([language] if language else []) + topics[:4],
+        "stack": curated.get("stack") or raw_stack,
         "url": repo["html_url"],
         "homepage": repo.get("homepage") or None,
         "language": language,
@@ -128,12 +129,15 @@ def to_card(repo, curated=None):
     }
 
 
-def main() -> int:
+def main():
     try:
         repos = api_get(f"/users/{USERNAME}/repos?per_page=100&sort=pushed&type=owner")
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
-        print(f"warn: GitHub API unreachable ({exc}); keeping committed projects.json", file=sys.stderr)
-        return 0  # keep the previously committed file
+        print(
+            f"warn: GitHub API unreachable ({exc}); keeping committed projects.json",
+            file=sys.stderr,
+        )
+        return 0
 
     visible = [
         r for r in repos
@@ -143,13 +147,13 @@ def main() -> int:
         and "portfolio-hide" not in r.get("topics", [])
     ]
 
-    # --- flagship: topic wins, else default ---
+    # flagship: topic wins, else default name
     flagship = next(
         (r["name"] for r in visible if "portfolio-flagship" in r.get("topics", [])),
         DEFAULT_FLAGSHIP,
     )
 
-    # --- featured: topic wins, else curated defaults ---
+    # featured: topic wins, else curated defaults
     featured_names = [r["name"] for r in visible if "portfolio-featured" in r.get("topics", [])]
     if not featured_names:
         featured_names = list(CURATED.keys())

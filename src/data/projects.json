@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-06-12T02:41:14+00:00",
-  "projects": [
+  "generatedAt": "2026-06-13T00:00:00+00:00",
+  "flagship": "roar-frontend",
+  "featured": [
     {
-      "title": "Roar \u2014 Article Builder",
-      "emoji": "\ud83e\udd81",
-      "flag": "FLAGSHIP",
+      "name": "roar-frontend",
+      "title": "Roar — Article Builder",
+      "emoji": "🦁",
       "blurb": "A content-creation platform frontend with a mobile-friendly article builder and a fully reworked UI system.",
       "stack": [
         "Next.js 15",
@@ -15,13 +16,16 @@
       ],
       "url": "https://github.com/MxxScott/roar-frontend",
       "homepage": null,
+      "language": "TypeScript",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": "FLAGSHIP"
     },
     {
-      "title": "Onlearn \u2014 E-Learning Platform",
-      "emoji": "\ud83c\udf93",
-      "flag": null,
+      "name": "Onlearn",
+      "title": "Onlearn — E-Learning Platform",
+      "emoji": "🎓",
       "blurb": "A fully responsive landing experience for an online learning platform, documented like production code.",
       "stack": [
         "Nuxt",
@@ -31,14 +35,17 @@
       ],
       "url": "https://github.com/MxxScott/Onlearn",
       "homepage": null,
+      "language": "Vue",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": null
     },
     {
+      "name": "Wings-Height-Insurance-Brokers-Limited",
       "title": "Wings Height Insurance Brokers",
-      "emoji": "\ud83c\udfe2",
-      "flag": null,
-      "blurb": "A complete multi-page corporate website \u2014 quotes, claims, bookings and service pages. Client-style delivery, framework-free.",
+      "emoji": "🏢",
+      "blurb": "A complete multi-page corporate website — quotes, claims, bookings and service pages. Client-style delivery, framework-free.",
       "stack": [
         "HTML5",
         "CSS3",
@@ -46,13 +53,16 @@
       ],
       "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
       "homepage": null,
+      "language": "HTML",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": null
     },
     {
+      "name": "Anime_Abyss",
       "title": "Anime Abyss",
-      "emoji": "\ud83c\udf0a",
-      "flag": null,
+      "emoji": "🌊",
       "blurb": "An anime discovery homepage with custom styling and scripted interactions on a modern Nuxt 4 foundation.",
       "stack": [
         "Nuxt 4",
@@ -61,13 +71,16 @@
       ],
       "url": "https://github.com/MxxScott/Anime_Abyss",
       "homepage": null,
+      "language": "Vue",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": null
     },
     {
+      "name": "Maneyger-7.0",
       "title": "Maneyger 7.0",
-      "emoji": "\ud83d\udcb0",
-      "flag": null,
+      "emoji": "💰",
       "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
       "stack": [
         "JavaScript",
@@ -76,14 +89,17 @@
       ],
       "url": "https://github.com/MxxScott/Maneyger-7.0",
       "homepage": null,
+      "language": "JavaScript",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": null
     },
     {
+      "name": "Inventory-Management-System",
       "title": "Inventory Manager CLI",
-      "emoji": "\ud83d\udce6",
-      "flag": null,
-      "blurb": "A stateful command-line inventory tracker \u2014 full CRUD, documented through every SDLC phase.",
+      "emoji": "📦",
+      "blurb": "A stateful command-line inventory tracker — full CRUD, documented through every SDLC phase.",
       "stack": [
         "Python",
         "CLI",
@@ -91,8 +107,118 @@
       ],
       "url": "https://github.com/MxxScott/Inventory-Management-System",
       "homepage": null,
+      "language": "Python",
       "stars": 0,
-      "pushedAt": null
+      "pushedAt": null,
+      "fork": false,
+      "flag": null
+    }
+  ],
+  "all": [
+    {
+      "name": "roar-frontend",
+      "title": "Roar — Article Builder",
+      "emoji": "🦁",
+      "blurb": "A content-creation platform frontend with a mobile-friendly article builder and a fully reworked UI system.",
+      "stack": [
+        "Next.js 15",
+        "React 19",
+        "Tailwind 4",
+        "Framer Motion",
+        "TypeScript"
+      ],
+      "url": "https://github.com/MxxScott/roar-frontend",
+      "homepage": null,
+      "language": "TypeScript",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
+    },
+    {
+      "name": "Onlearn",
+      "title": "Onlearn — E-Learning Platform",
+      "emoji": "🎓",
+      "blurb": "A fully responsive landing experience for an online learning platform, documented like production code.",
+      "stack": [
+        "Nuxt",
+        "Vue 3",
+        "Tailwind",
+        "TypeScript"
+      ],
+      "url": "https://github.com/MxxScott/Onlearn",
+      "homepage": null,
+      "language": "Vue",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
+    },
+    {
+      "name": "Wings-Height-Insurance-Brokers-Limited",
+      "title": "Wings Height Insurance Brokers",
+      "emoji": "🏢",
+      "blurb": "A complete multi-page corporate website — quotes, claims, bookings and service pages.",
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
+      "homepage": null,
+      "language": "HTML",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
+    },
+    {
+      "name": "Anime_Abyss",
+      "title": "Anime Abyss",
+      "emoji": "🌊",
+      "blurb": "An anime discovery homepage with custom styling on a modern Nuxt 4 foundation.",
+      "stack": [
+        "Nuxt 4",
+        "Vue 3",
+        "Tailwind"
+      ],
+      "url": "https://github.com/MxxScott/Anime_Abyss",
+      "homepage": null,
+      "language": "Vue",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
+    },
+    {
+      "name": "Maneyger-7.0",
+      "title": "Maneyger 7.0",
+      "emoji": "💰",
+      "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
+      "stack": [
+        "JavaScript",
+        "Bootstrap",
+        "CSS"
+      ],
+      "url": "https://github.com/MxxScott/Maneyger-7.0",
+      "homepage": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
+    },
+    {
+      "name": "Inventory-Management-System",
+      "title": "Inventory Manager CLI",
+      "emoji": "📦",
+      "blurb": "A stateful command-line inventory tracker — full CRUD, documented through every SDLC phase.",
+      "stack": [
+        "Python",
+        "CLI",
+        "SDLC Docs"
+      ],
+      "url": "https://github.com/MxxScott/Inventory-Management-System",
+      "homepage": null,
+      "language": "Python",
+      "stars": 0,
+      "pushedAt": null,
+      "fork": false
     }
   ]
 }

@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FlowItem } from './Flow';
 import data from '@/data/projects.json';
+import AllProjectsOverlay from './AllProjectsOverlay';
 
 const DIRS = ['left', 'up', 'right'];
 
@@ -13,11 +15,13 @@ function ProjectCard({ p, i }) {
         whileHover={{ y: -6 }}
         className="card group relative flex h-full flex-col overflow-hidden p-5"
       >
+        {/* top accent bar */}
         <span className="absolute inset-x-0 top-0 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
 
-        {p.flag && (
+        {/* flagship ribbon */}
+        {p.flag === 'FLAGSHIP' && (
           <span className="absolute -right-9 top-4 rotate-45 bg-grad px-10 py-0.5 text-[9px] font-bold tracking-wider text-white">
-            {p.flag}
+            FLAGSHIP
           </span>
         )}
 
@@ -64,30 +68,54 @@ function ProjectCard({ p, i }) {
 }
 
 export default function Projects() {
-  return (
-    <section className="section-scroll h-full overflow-y-auto">
-      <div className="flex min-h-full items-center px-6 py-12">
-        <div className="mx-auto w-full max-w-6xl">
-          <FlowItem from="left" order={0}>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-mint">Projects</p>
-          </FlowItem>
-          <FlowItem from="left" order={1}>
-            <h2 className="font-display mb-3 text-3xl font-bold md:text-4xl">Selected work</h2>
-          </FlowItem>
-          <FlowItem from="left" order={2}>
-            <p className="mb-8 max-w-2xl text-sm text-muted">
-              Modern framework apps, complete business sites, and systems-level tooling. Card data
-              is generated at build time by a Python pipeline hitting the GitHub API.
-            </p>
-          </FlowItem>
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  const featured = data.featured ?? [];
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {data.projects.map((p, i) => (
-              <ProjectCard key={p.url} p={p} i={i} />
-            ))}
+  return (
+    <>
+      <section className="section-scroll h-full overflow-y-auto">
+        <div className="flex min-h-full items-center px-6 py-12">
+          <div className="mx-auto w-full max-w-6xl">
+            <FlowItem from="left" order={0}>
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-mint">Projects</p>
+            </FlowItem>
+            <FlowItem from="left" order={1}>
+              <h2 className="font-display mb-3 text-3xl font-bold md:text-4xl">Selected work</h2>
+            </FlowItem>
+            <FlowItem from="left" order={2}>
+              <p className="mb-8 max-w-2xl text-sm text-muted">
+                Modern framework apps, complete business sites, and systems-level tooling. Card data
+                is generated at build time by a Python pipeline hitting the GitHub API.
+              </p>
+            </FlowItem>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {featured.map((p, i) => (
+                <ProjectCard key={p.url} p={p} i={i} />
+              ))}
+            </div>
+
+            <FlowItem from="up" order={8}>
+              <div className="mt-10 flex justify-center">
+                <motion.button
+                  onClick={() => setOverlayOpen(true)}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="group flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-6 py-2.5 text-sm font-semibold text-[#c6d2f2] transition-colors hover:border-accent hover:bg-accent/20"
+                >
+                  View all projects
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </motion.button>
+              </div>
+            </FlowItem>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <AllProjectsOverlay
+        open={overlayOpen}
+        onClose={() => setOverlayOpen(false)}
+      />
+    </>
   );
 }
