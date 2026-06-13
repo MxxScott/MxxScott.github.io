@@ -18,14 +18,18 @@ function Core({ scrollRef }) {
     const t = state.clock.elapsedTime;
     const scroll = scrollRef.current; // 0..1 over the entire page
 
-    pointer.current.x += (state.pointer.x - pointer.current.x) * 0.04;
-    pointer.current.y += (state.pointer.y - pointer.current.y) * 0.04;
+    // smooth lerp — slightly faster tracking for more responsive parallax
+    pointer.current.x += (state.pointer.x - pointer.current.x) * 0.055;
+    pointer.current.y += (state.pointer.y - pointer.current.y) * 0.055;
 
     if (group.current) {
       group.current.rotation.y = t * 0.1 + scroll * Math.PI * 2;
-      group.current.rotation.x = pointer.current.y * 0.25 + scroll * 0.5;
-      group.current.position.x = pointer.current.x * 0.5 + scroll * 2.4;
-      group.current.position.y = -scroll * 0.9;
+      // cursor drives tilt — more pronounced than before
+      group.current.rotation.x = pointer.current.y * 0.38 + scroll * 0.5;
+      group.current.rotation.z = pointer.current.x * -0.12;
+      // cursor drives position drift (x + subtle y)
+      group.current.position.x = pointer.current.x * 0.8 + scroll * 2.4;
+      group.current.position.y = pointer.current.y * 0.25 - scroll * 0.9;
       group.current.position.z = -scroll * 1.6;
       const s = 1 - scroll * 0.3;
       group.current.scale.set(s, s, s);

@@ -24,6 +24,13 @@ export const metadata = {
     'David Lawal',
     'MxxScott',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     title: 'David Lawal — Frontend Engineer',
     description: 'Building professional, complex, and immersive web experiences.',

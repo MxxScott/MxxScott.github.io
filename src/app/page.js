@@ -7,10 +7,16 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CursorGlow from '@/components/CursorGlow';
+import CustomCursor from '@/components/CustomCursor';
+import IntroAnimation from '@/components/IntroAnimation';
 
 export default function Home() {
   return (
     <main>
+      <IntroAnimation />
+      <CustomCursor />
+      <CursorGlow />
       <Navbar />
       <Background />
       <div className="relative z-10">

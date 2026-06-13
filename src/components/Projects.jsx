@@ -5,15 +5,17 @@ import { motion } from 'framer-motion';
 import { FlowItem } from './Flow';
 import data from '@/data/projects.json';
 import AllProjectsOverlay from './AllProjectsOverlay';
+import ProjectDrawer from './ProjectDrawer';
 
 const DIRS = ['left', 'up', 'right'];
 
-function ProjectCard({ p, i }) {
+function ProjectCard({ p, i, onOpen }) {
   return (
     <FlowItem from={DIRS[i % 3]} order={3 + Math.floor(i / 3)}>
       <motion.article
         whileHover={{ y: -6 }}
-        className="card group relative flex h-full flex-col overflow-hidden p-5"
+        onClick={() => onOpen(p)}
+        className="card group relative flex h-full cursor-pointer flex-col overflow-hidden p-5"
       >
         {/* top accent bar */}
         <span className="absolute inset-x-0 top-0 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
@@ -33,6 +35,7 @@ function ProjectCard({ p, i }) {
                 href={p.homepage}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 className="text-muted transition-colors hover:text-ink"
               >
                 Live ↗
@@ -42,6 +45,7 @@ function ProjectCard({ p, i }) {
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="text-muted transition-colors hover:text-ink"
             >
               Code ↗
@@ -62,6 +66,11 @@ function ProjectCard({ p, i }) {
             </span>
           ))}
         </div>
+
+        {/* "details" hint */}
+        <p className="mt-3 text-[10px] text-muted/50 transition-colors group-hover:text-muted">
+          Click for details →
+        </p>
       </motion.article>
     </FlowItem>
   );
@@ -69,6 +78,7 @@ function ProjectCard({ p, i }) {
 
 export default function Projects() {
   const [overlayOpen, setOverlayOpen] = useState(false);
+  const [drawerProject, setDrawerProject] = useState(null);
   const featured = data.featured ?? [];
 
   return (
@@ -91,7 +101,7 @@ export default function Projects() {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((p, i) => (
-                <ProjectCard key={p.url} p={p} i={i} />
+                <ProjectCard key={p.url} p={p} i={i} onOpen={setDrawerProject} />
               ))}
             </div>
 
@@ -112,10 +122,8 @@ export default function Projects() {
         </div>
       </section>
 
-      <AllProjectsOverlay
-        open={overlayOpen}
-        onClose={() => setOverlayOpen(false)}
-      />
+      <AllProjectsOverlay open={overlayOpen} onClose={() => setOverlayOpen(false)} />
+      <ProjectDrawer project={drawerProject} onClose={() => setDrawerProject(null)} />
     </>
   );
 }

@@ -3,6 +3,32 @@
 import { motion } from 'framer-motion';
 import { FlowItem } from './Flow';
 
+/* brand color + short abbreviation for each tech */
+const TECH = {
+  'Nuxt':                    { color: '#00dc82', abbr: 'Nx', fg: '#000' },
+  'Vue 3':                   { color: '#42b883', abbr: 'V',  fg: '#fff' },
+  'React 19':                { color: '#61dafb', abbr: '⚛',  fg: '#000' },
+  'Next.js 15':              { color: '#ffffff', abbr: 'N',  fg: '#000' },
+  'Tailwind CSS':            { color: '#06b6d4', abbr: 'Tw', fg: '#000' },
+  'Framer Motion':           { color: '#ff4d6a', abbr: 'FM', fg: '#fff' },
+  'HTML5':                   { color: '#e34f26', abbr: 'H5', fg: '#fff' },
+  'CSS3':                    { color: '#264de4', abbr: 'C3', fg: '#fff' },
+  'JavaScript (ES2024)':     { color: '#f7df1e', abbr: 'JS', fg: '#000' },
+  'TypeScript':              { color: '#3178c6', abbr: 'TS', fg: '#fff' },
+  'Three.js / R3F':          { color: '#8ca6ff', abbr: '3D', fg: '#000' },
+  'Responsive Design':       { color: '#8b5cf6', abbr: '↕',  fg: '#fff' },
+  'Python':                  { color: '#3776ab', abbr: 'Py', fg: '#fff' },
+  'C':                       { color: '#a8b9cc', abbr: 'C',  fg: '#000' },
+  'C++':                     { color: '#00599c', abbr: 'C+', fg: '#fff' },
+  'Java':                    { color: '#ed8b00', abbr: 'Jv', fg: '#fff' },
+  'RISC-V / MIPS ASM':       { color: '#6b7280', abbr: '01', fg: '#fff' },
+  'Node.js':                 { color: '#339933', abbr: 'Nd', fg: '#fff' },
+  'Express':                 { color: '#d1d5db', abbr: 'Ex', fg: '#000' },
+  'Git / GitHub':            { color: '#f05032', abbr: 'G',  fg: '#fff' },
+  'GitHub Actions (CI/CD)':  { color: '#2088ff', abbr: 'CI', fg: '#fff' },
+  'Netlify':                 { color: '#00c7b7', abbr: 'NF', fg: '#000' },
+};
+
 const GROUPS = [
   {
     title: 'Frontend Frameworks',
@@ -21,6 +47,37 @@ const GROUPS = [
     skills: ['Node.js', 'Express', 'Git / GitHub', 'GitHub Actions (CI/CD)', 'Netlify'],
   },
 ];
+
+function IconChip({ name }) {
+  const meta = TECH[name];
+  return (
+    <span className="flex items-center gap-1.5 rounded-full border border-line bg-accent/10 py-1 pl-1 pr-3 text-xs text-[#c6d2f2]">
+      {meta ? (
+        <span
+          style={{
+            background: meta.color,
+            color: meta.fg,
+            minWidth: 20,
+            height: 20,
+            borderRadius: 4,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 9,
+            fontWeight: 700,
+            letterSpacing: 0,
+            flexShrink: 0,
+          }}
+        >
+          {meta.abbr}
+        </span>
+      ) : (
+        <span className="h-2 w-2 shrink-0 rounded-full bg-accent/60" />
+      )}
+      {name}
+    </span>
+  );
+}
 
 export default function Skills() {
   return (
@@ -52,12 +109,7 @@ export default function Skills() {
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {g.skills.map((s) => (
-                      <span
-                        key={s}
-                        className="rounded-full border border-line bg-accent/10 px-3 py-1 text-xs text-[#c6d2f2]"
-                      >
-                        {s}
-                      </span>
+                      <IconChip key={s} name={s} />
                     ))}
                   </div>
                 </motion.div>

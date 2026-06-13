@@ -17,6 +17,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* force cursor:none on every element so the custom cursor always shows */
+@media (pointer: fine) {
+  html, html * {
+    cursor: none !important;
+  }
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-ink);
@@ -45,6 +52,19 @@ body {
   border: 1px solid var(--color-line);
   border-radius: 16px;
 }
+
+/* ── global scrollbar ── */
+html {
+  scrollbar-color: var(--color-accent) var(--color-bg);
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-mint); }
 
 /* hide scrollbars inside stacked sections, keep them scrollable */
 .section-scroll {

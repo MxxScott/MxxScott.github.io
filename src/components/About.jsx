@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FlowItem } from './Flow';
+import ContributionGraph from './ContributionGraph';
 
 const STATS = [
   { value: '10+', label: 'Projects shipped to GitHub' },
@@ -106,6 +107,12 @@ export default function About() {
                   >
                     Download Résumé ↓
                   </a>
+                </div>
+              </FlowItem>
+
+              <FlowItem from="up" order={7}>
+                <div className="card p-4">
+                  <ContributionGraph />
                 </div>
               </FlowItem>
             </div>

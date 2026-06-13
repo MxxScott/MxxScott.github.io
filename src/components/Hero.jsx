@@ -10,10 +10,22 @@ export default function Hero() {
   return (
     <header className="relative flex h-full items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-4xl px-6 text-center">
+
+        {/* open-to-work badge */}
         <FlowItem order={0} from="up">
-          <span className="mb-6 inline-block rounded-full border border-line bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[2px] text-mint">
-            Frontend Engineer
-          </span>
+          <div className="mb-5 flex flex-wrap items-center justify-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[2px] text-mint">
+              Frontend Engineer
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400">
+              {/* pulsing green dot */}
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Available for opportunities
+            </span>
+          </div>
         </FlowItem>
 
         <FlowItem order={1} from="up">
@@ -38,12 +50,20 @@ export default function Hero() {
               View My Work
             </a>
             <a
+              href="/David-Lawal-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-line bg-white/5 px-8 py-3.5 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+            >
+              Download CV ↓
+            </a>
+            <a
               href="https://github.com/MxxScott"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-line bg-white/5 px-8 py-3.5 text-sm font-semibold transition-transform hover:-translate-y-0.5"
             >
-              GitHub Profile
+              GitHub ↗
             </a>
           </div>
         </FlowItem>
