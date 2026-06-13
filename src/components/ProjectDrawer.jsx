@@ -66,6 +66,27 @@ const DETAILS = {
     ],
     what: 'A command-line inventory tracker built in Python, fully documented across every SDLC phase as a study in professional software process.',
   },
+  FusionOCR: {
+    role: 'Solo developer',
+    year: '2025',
+    highlights: [
+      'Runs Tesseract, EasyOCR, and Calamari simultaneously on the same image',
+      'Levenshtein consensus voting picks the most agreed-upon word at each position',
+      'FLAN-T5 post-processing corrects grammar and coherence in the fused output',
+      'Full structured logging — every run produces a timestamped debug log',
+    ],
+    what: 'An AI OCR pipeline that fuses three independent OCR engines via edit-distance consensus, then refines the result with a FLAN-T5 language model. Built to outperform any single engine on noisy or low-quality images.',
+  },
+  'terminal-games-cpp': {
+    role: 'Solo developer',
+    year: '2024',
+    highlights: [
+      'Snake: difficulty selector (Easy/Medium/Hard/Custom ms), tail growth, wall & self-collision',
+      'Pac-Man: procedural maze generation, pellet scoring, two ghosts with hybrid chase/random AI',
+      'Zero dependencies — all rendering via cout, input via conio.h',
+    ],
+    what: 'Snake and Pac-Man built from scratch in C++ for the Windows terminal. Demonstrates game loop architecture, grid-based collision detection, and rudimentary AI with no external libraries.',
+  },
 };
 
 function DrawerInner({ project, onClose }) {

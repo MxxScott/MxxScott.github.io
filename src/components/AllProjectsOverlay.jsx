@@ -47,6 +47,16 @@ const CURATED = {
     blurb: 'A stateful command-line inventory tracker — full CRUD, documented through every SDLC phase.',
     stack: ['Python', 'CLI', 'SDLC Docs'],
   },
+  FusionOCR: {
+    title: 'FusionOCR', emoji: '🔬',
+    blurb: 'Multi-engine OCR pipeline: runs Tesseract, EasyOCR, and Calamari in parallel, fuses outputs via Levenshtein consensus voting, then cleans with FLAN-T5.',
+    stack: ['Python', 'EasyOCR', 'HuggingFace', 'Calamari', 'Tesseract'],
+  },
+  'terminal-games-cpp': {
+    title: 'Terminal Games (C++)', emoji: '🕹️',
+    blurb: 'Snake and Pac-Man built from scratch in C++ for the terminal — game loops, grid collision, and ghost AI with no external libraries.',
+    stack: ['C++', 'Terminal', 'Game Loop', 'AI'],
+  },
 };
 
 function repoToCard(r) {
