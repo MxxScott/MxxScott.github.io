@@ -16,7 +16,11 @@ export default function CustomCursor() {
   const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
-    setIsPointerFine(window.matchMedia('(pointer: fine)').matches);
+    const media = window.matchMedia('(pointer: fine)');
+    setIsPointerFine(media.matches);
+    const onChange = (event) => setIsPointerFine(event.matches);
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
   }, []);
 
   useEffect(() => {
@@ -27,9 +31,9 @@ export default function CustomCursor() {
     if (!dot || !ring) return;
 
     // Raw target position (set on mousemove — instant)
-    let tx = -200, ty = -200;
+    let tx = -9999, ty = -9999;
     // Spring position for the ring
-    let rx = -200, ry = -200;
+    let rx = -9999, ry = -9999;
     let hovering = false;
     let raf;
 
@@ -83,7 +87,7 @@ export default function CustomCursor() {
       document.removeEventListener('mouseout',  onOut);
       cancelAnimationFrame(raf);
     };
-  }, [reduced]);
+  }, [reduced, isPointerFine]);
 
   if (reduced || !isPointerFine) return null;
 
@@ -99,6 +103,7 @@ export default function CustomCursor() {
           zIndex: 999999,
           pointerEvents: 'none',
           willChange: 'transform',
+          transform: 'translate(-9999px, -9999px)',
           /* centering handled by negative margin */
           width: 8, height: 8,
           marginLeft: -4, marginTop: -4,
@@ -119,6 +124,7 @@ export default function CustomCursor() {
           zIndex: 999998,
           pointerEvents: 'none',
           willChange: 'transform',
+          transform: 'translate(-9999px, -9999px)',
           width: 34, height: 34,
           marginLeft: -17, marginTop: -17,
           borderRadius: '50%',

@@ -13,7 +13,11 @@ export default function CursorGlow() {
   const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
-    setIsPointerFine(window.matchMedia('(pointer: fine)').matches);
+    const media = window.matchMedia('(pointer: fine)');
+    setIsPointerFine(media.matches);
+    const onChange = (event) => setIsPointerFine(event.matches);
+    media.addEventListener('change', onChange);
+    return () => media.removeEventListener('change', onChange);
   }, []);
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export default function CursorGlow() {
       window.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(raf);
     };
-  }, [reduced]);
+  }, [reduced, isPointerFine]);
 
   if (reduced || !isPointerFine) return null;
 
@@ -59,6 +63,7 @@ export default function CursorGlow() {
         height: 700,
         marginLeft: -350,
         marginTop: -350,
+        transform: 'translate(-9999px, -9999px)',
         borderRadius: '50%',
         background:
           'radial-gradient(circle, rgba(47,99,240,0.10) 0%, rgba(47,99,240,0.04) 40%, transparent 70%)',
