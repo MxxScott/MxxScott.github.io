@@ -1,18 +1,23 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 
 /**
  * Soft radial gradient that follows the cursor.
- * Skipped entirely when prefers-reduced-motion is set.
+ * Mouse-only — skipped on touch/mobile devices and reduced-motion.
  */
 export default function CursorGlow() {
   const ref = useRef(null);
   const reduced = useReducedMotion();
+  const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
-    if (reduced) return;
+    setIsPointerFine(window.matchMedia('(pointer: fine)').matches);
+  }, []);
+
+  useEffect(() => {
+    if (reduced || !isPointerFine) return;
     const el = ref.current;
     if (!el) return;
 
@@ -42,7 +47,7 @@ export default function CursorGlow() {
     };
   }, [reduced]);
 
-  if (reduced) return null;
+  if (reduced || !isPointerFine) return null;
 
   return (
     <div

@@ -49,8 +49,13 @@ const CURATED = {
   },
   FusionOCR: {
     title: 'FusionOCR', emoji: '🔬',
-    blurb: 'Multi-engine OCR pipeline: runs Tesseract, EasyOCR, and Calamari in parallel, fuses outputs via Levenshtein consensus voting, then cleans with FLAN-T5.',
-    stack: ['Python', 'EasyOCR', 'HuggingFace', 'Calamari', 'Tesseract'],
+    blurb: 'Multi-engine OCR pipeline for children\'s handwritten English — fuses TrOCR, EasyOCR, and Tesseract via weighted Levenshtein consensus. Powers Verdikt.',
+    stack: ['Python', 'TrOCR', 'EasyOCR', 'OpenCV', 'HuggingFace'],
+  },
+  Verdikt: {
+    title: 'Verdikt', emoji: '⚖️',
+    blurb: 'AI-powered exam script marking — transcribe handwritten scripts, verify accuracy with a vision LLM, then mark each answer against a mark scheme.',
+    stack: ['Python', 'Ollama', 'LLaVA', 'llama3.2', 'FusionOCR'],
   },
   'terminal-games-cpp': {
     title: 'Terminal Games (C++)', emoji: '🕹️',

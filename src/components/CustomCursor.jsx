@@ -1,31 +1,26 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 
 const INTERACTIVE = 'a, button, [role="button"], input, textarea, select, label, [tabindex]';
 
 /**
  * Custom cursor — replaces the OS pointer entirely.
- *
- * Two layers:
- *   dot  — 8px filled circle, tracks instantly (feels snappy)
- *   ring — 34px outline circle, spring-follows with a lag (feels alive)
- *
- * On hover over interactive elements:
- *   dot  → shrinks + hidden
- *   ring → expands to 52px, fills with accent/15
- *
- * Everything is driven by rAF with ref-based state to avoid
- * React re-renders inside the animation loop.
+ * Mouse-only: skipped on touch/mobile (pointer: coarse) and reduced-motion.
  */
 export default function CustomCursor() {
   const dotRef  = useRef(null);
   const ringRef = useRef(null);
   const reduced = useReducedMotion();
+  const [isPointerFine, setIsPointerFine] = useState(false);
 
   useEffect(() => {
-    if (reduced) return;
+    setIsPointerFine(window.matchMedia('(pointer: fine)').matches);
+  }, []);
+
+  useEffect(() => {
+    if (reduced || !isPointerFine) return;
 
     const dot  = dotRef.current;
     const ring = ringRef.current;
@@ -90,7 +85,7 @@ export default function CustomCursor() {
     };
   }, [reduced]);
 
-  if (reduced) return null;
+  if (reduced || !isPointerFine) return null;
 
   return (
     <>

@@ -70,12 +70,23 @@ const DETAILS = {
     role: 'Solo developer',
     year: '2025',
     highlights: [
-      'Runs Tesseract, EasyOCR, and Calamari simultaneously on the same image',
-      'Levenshtein consensus voting picks the most agreed-upon word at each position',
-      'FLAN-T5 post-processing corrects grammar and coherence in the fused output',
-      'Full structured logging — every run produces a timestamped debug log',
+      'Dual TrOCR models (handwritten + printed) cover the full spectrum of children\'s writing styles',
+      'Weighted Levenshtein consensus across 4 engines — TrOCR × 2, EasyOCR, Tesseract',
+      'Preprocessing removes ruled lines, corrects skew, and handles uneven phone-photo lighting',
+      'Batch TrOCR inference + parallel threads — optimised for throughput without sacrificing accuracy',
     ],
-    what: 'An AI OCR pipeline that fuses three independent OCR engines via edit-distance consensus, then refines the result with a FLAN-T5 language model. Built to outperform any single engine on noisy or low-quality images.',
+    what: 'Multi-engine OCR pipeline purpose-built for children\'s handwritten English. Fuses four OCR engines via weighted edit-distance consensus and outputs structured JSON consumed by Verdikt for AI marking.',
+  },
+  Verdikt: {
+    role: 'Solo developer',
+    year: '2025',
+    highlights: [
+      'Three-stage pipeline: FusionOCR transcription → vision LLM verification → LLM marking',
+      'Marks by concept and understanding — explicitly ignores spelling errors in children\'s answers',
+      'Flags low-confidence OCR lines and gives benefit of the doubt during marking',
+      'Pluggable LLM backend: Ollama (local, free) or HuggingFace Inference API',
+    ],
+    what: 'AI-powered exam script marking system. Takes handwritten children\'s scripts, verifies the OCR transcription with a vision LLM, then marks each answer against a mark scheme — returning scores, justification, and student feedback.',
   },
   'terminal-games-cpp': {
     role: 'Solo developer',
