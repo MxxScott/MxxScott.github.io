@@ -1,31 +1,61 @@
 {
-  "generatedAt": "2026-06-13T00:00:00+00:00",
-  "flagship": "roar-frontend",
+  "generatedAt": "2026-06-16T12:58:50+00:00",
+  "flagship": "FusionOCR",
   "featured": [
     {
-      "name": "roar-frontend",
-      "title": "Roar — Article Builder",
-      "emoji": "🦁",
-      "blurb": "A content-creation platform frontend with a mobile-friendly article builder and a fully reworked UI system.",
+      "name": "FusionOCR",
+      "title": "FusionOCR",
+      "emoji": "\ud83d\udc0d",
+      "blurb": "Multi-engine OCR pipeline \u2014 fuses Tesseract, EasyOCR, and Calamari via Levenshtein consensus voting, refined with FLAN-T5.",
       "stack": [
-        "Next.js 15",
-        "React 19",
-        "Tailwind 4",
-        "Framer Motion",
-        "TypeScript"
+        "Python"
       ],
-      "url": "https://github.com/MxxScott/roar-frontend",
+      "url": "https://github.com/MxxScott/FusionOCR",
       "homepage": null,
-      "language": "TypeScript",
+      "language": "Python",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-13T06:45:13Z",
       "fork": false,
       "flag": "FLAGSHIP"
     },
     {
+      "name": "terminal-games-cpp",
+      "title": "terminal games cpp",
+      "emoji": "\u2699\ufe0f",
+      "blurb": "Snake and Pac-Man built from scratch in C++ for the terminal \u2014 game loops, grid collision, and ghost AI with no external libraries.",
+      "stack": [
+        "C++"
+      ],
+      "url": "https://github.com/MxxScott/terminal-games-cpp",
+      "homepage": null,
+      "language": "C++",
+      "stars": 0,
+      "pushedAt": "2026-06-16T10:56:29Z",
+      "fork": false,
+      "flag": null
+    },
+    {
+      "name": "Inventory-Management-System",
+      "title": "Inventory Manager CLI",
+      "emoji": "\ud83d\udce6",
+      "blurb": "A stateful command-line inventory tracker \u2014 full CRUD, documented through every SDLC phase.",
+      "stack": [
+        "Python",
+        "CLI",
+        "SDLC Docs"
+      ],
+      "url": "https://github.com/MxxScott/Inventory-Management-System",
+      "homepage": null,
+      "language": "Python",
+      "stars": 0,
+      "pushedAt": "2026-06-16T10:55:49Z",
+      "fork": false,
+      "flag": null
+    },
+    {
       "name": "Onlearn",
-      "title": "Onlearn — E-Learning Platform",
-      "emoji": "🎓",
+      "title": "Onlearn \u2014 E-Learning Platform",
+      "emoji": "\ud83c\udf93",
       "blurb": "A fully responsive landing experience for an online learning platform, documented like production code.",
       "stack": [
         "Nuxt",
@@ -34,35 +64,33 @@
         "TypeScript"
       ],
       "url": "https://github.com/MxxScott/Onlearn",
-      "homepage": null,
+      "homepage": "https://onlearn2025.netlify.app/",
       "language": "Vue",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T10:55:35Z",
       "fork": false,
       "flag": null
     },
     {
-      "name": "Wings-Height-Insurance-Brokers-Limited",
-      "title": "Wings Height Insurance Brokers",
-      "emoji": "🏢",
-      "blurb": "A complete multi-page corporate website — quotes, claims, bookings and service pages. Client-style delivery, framework-free.",
+      "name": "FusionOCR-Tester",
+      "title": "FusionOCR Tester",
+      "emoji": "\ud83c\udf10",
+      "blurb": "A browser-based test bench for FusionOCR \u2014 compare what each OCR engine read per line, fix transcriptions by hand, verify them against the image with an AI vision model, and export clean JSON. Runs on one host, usable from any device.",
       "stack": [
-        "HTML5",
-        "CSS3",
-        "JavaScript"
+        "HTML"
       ],
-      "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
+      "url": "https://github.com/MxxScott/FusionOCR-Tester",
       "homepage": null,
       "language": "HTML",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T09:35:46Z",
       "fork": false,
       "flag": null
     },
     {
       "name": "Anime_Abyss",
       "title": "Anime Abyss",
-      "emoji": "🌊",
+      "emoji": "\ud83c\udf0a",
       "blurb": "An anime discovery homepage with custom styling and scripted interactions on a modern Nuxt 4 foundation.",
       "stack": [
         "Nuxt 4",
@@ -70,36 +98,52 @@
         "Tailwind"
       ],
       "url": "https://github.com/MxxScott/Anime_Abyss",
-      "homepage": null,
-      "language": "Vue",
+      "homepage": "https://animeabyss.netlify.app/",
+      "language": "CSS",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T09:27:57Z",
       "fork": false,
       "flag": null
+    }
+  ],
+  "all": [
+    {
+      "name": "Wings-Height-Insurance-Brokers-Limited",
+      "title": "Wings Height Insurance Brokers",
+      "emoji": "\ud83c\udfe2",
+      "blurb": "A complete multi-page corporate website \u2014 quotes, claims, bookings and service pages. Client-style delivery, framework-free.",
+      "stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
+      "homepage": "https://mxxscott.github.io/Wings-Height-Insurance-Brokers-Limited/",
+      "language": "HTML",
+      "stars": 1,
+      "pushedAt": "2026-06-16T10:56:46Z",
+      "fork": false
     },
     {
-      "name": "Maneyger-7.0",
-      "title": "Maneyger 7.0",
-      "emoji": "💰",
-      "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
+      "name": "terminal-games-cpp",
+      "title": "terminal games cpp",
+      "emoji": "\u2699\ufe0f",
+      "blurb": "Snake and Pac-Man built from scratch in C++ for the terminal \u2014 game loops, grid collision, and ghost AI with no external libraries.",
       "stack": [
-        "JavaScript",
-        "Bootstrap",
-        "CSS"
+        "C++"
       ],
-      "url": "https://github.com/MxxScott/Maneyger-7.0",
+      "url": "https://github.com/MxxScott/terminal-games-cpp",
       "homepage": null,
-      "language": "JavaScript",
+      "language": "C++",
       "stars": 0,
-      "pushedAt": null,
-      "fork": false,
-      "flag": null
+      "pushedAt": "2026-06-16T10:56:29Z",
+      "fork": false
     },
     {
       "name": "Inventory-Management-System",
       "title": "Inventory Manager CLI",
-      "emoji": "📦",
-      "blurb": "A stateful command-line inventory tracker — full CRUD, documented through every SDLC phase.",
+      "emoji": "\ud83d\udce6",
+      "blurb": "A stateful command-line inventory tracker \u2014 full CRUD, documented through every SDLC phase.",
       "stack": [
         "Python",
         "CLI",
@@ -109,35 +153,13 @@
       "homepage": null,
       "language": "Python",
       "stars": 0,
-      "pushedAt": null,
-      "fork": false,
-      "flag": null
-    }
-  ],
-  "all": [
-    {
-      "name": "roar-frontend",
-      "title": "Roar — Article Builder",
-      "emoji": "🦁",
-      "blurb": "A content-creation platform frontend with a mobile-friendly article builder and a fully reworked UI system.",
-      "stack": [
-        "Next.js 15",
-        "React 19",
-        "Tailwind 4",
-        "Framer Motion",
-        "TypeScript"
-      ],
-      "url": "https://github.com/MxxScott/roar-frontend",
-      "homepage": null,
-      "language": "TypeScript",
-      "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T10:55:49Z",
       "fork": false
     },
     {
       "name": "Onlearn",
-      "title": "Onlearn — E-Learning Platform",
-      "emoji": "🎓",
+      "title": "Onlearn \u2014 E-Learning Platform",
+      "emoji": "\ud83c\udf93",
       "blurb": "A fully responsive landing experience for an online learning platform, documented like production code.",
       "stack": [
         "Nuxt",
@@ -146,50 +168,31 @@
         "TypeScript"
       ],
       "url": "https://github.com/MxxScott/Onlearn",
-      "homepage": null,
+      "homepage": "https://onlearn2025.netlify.app/",
       "language": "Vue",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T10:55:35Z",
       "fork": false
     },
     {
-      "name": "Wings-Height-Insurance-Brokers-Limited",
-      "title": "Wings Height Insurance Brokers",
-      "emoji": "🏢",
-      "blurb": "A complete multi-page corporate website — quotes, claims, bookings and service pages.",
+      "name": "C_learn",
+      "title": "C learn",
+      "emoji": "\u2699\ufe0f",
+      "blurb": "C programming practice \u2014 loops, I/O, and coursework solutions. ",
       "stack": [
-        "HTML5",
-        "CSS3",
-        "JavaScript"
+        "C"
       ],
-      "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
+      "url": "https://github.com/MxxScott/C_learn",
       "homepage": null,
-      "language": "HTML",
+      "language": "C",
       "stars": 0,
-      "pushedAt": null,
-      "fork": false
-    },
-    {
-      "name": "Anime_Abyss",
-      "title": "Anime Abyss",
-      "emoji": "🌊",
-      "blurb": "An anime discovery homepage with custom styling on a modern Nuxt 4 foundation.",
-      "stack": [
-        "Nuxt 4",
-        "Vue 3",
-        "Tailwind"
-      ],
-      "url": "https://github.com/MxxScott/Anime_Abyss",
-      "homepage": null,
-      "language": "Vue",
-      "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T10:55:12Z",
       "fork": false
     },
     {
       "name": "Maneyger-7.0",
       "title": "Maneyger 7.0",
-      "emoji": "💰",
+      "emoji": "\ud83d\udcb0",
       "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
       "stack": [
         "JavaScript",
@@ -197,27 +200,106 @@
         "CSS"
       ],
       "url": "https://github.com/MxxScott/Maneyger-7.0",
-      "homepage": null,
+      "homepage": "https://mxxscott.github.io/Maneyger-7.0/",
       "language": "JavaScript",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-16T09:58:39Z",
       "fork": false
     },
     {
-      "name": "Inventory-Management-System",
-      "title": "Inventory Manager CLI",
-      "emoji": "📦",
-      "blurb": "A stateful command-line inventory tracker — full CRUD, documented through every SDLC phase.",
+      "name": "FusionOCR-Tester",
+      "title": "FusionOCR Tester",
+      "emoji": "\ud83c\udf10",
+      "blurb": "A browser-based test bench for FusionOCR \u2014 compare what each OCR engine read per line, fix transcriptions by hand, verify them against the image with an AI vision model, and export clean JSON. Runs on one host, usable from any device.",
       "stack": [
-        "Python",
-        "CLI",
-        "SDLC Docs"
+        "HTML"
       ],
-      "url": "https://github.com/MxxScott/Inventory-Management-System",
+      "url": "https://github.com/MxxScott/FusionOCR-Tester",
+      "homepage": null,
+      "language": "HTML",
+      "stars": 0,
+      "pushedAt": "2026-06-16T09:35:46Z",
+      "fork": false
+    },
+    {
+      "name": "Anime_Abyss",
+      "title": "Anime Abyss",
+      "emoji": "\ud83c\udf0a",
+      "blurb": "An anime discovery homepage with custom styling and scripted interactions on a modern Nuxt 4 foundation.",
+      "stack": [
+        "Nuxt 4",
+        "Vue 3",
+        "Tailwind"
+      ],
+      "url": "https://github.com/MxxScott/Anime_Abyss",
+      "homepage": "https://animeabyss.netlify.app/",
+      "language": "CSS",
+      "stars": 0,
+      "pushedAt": "2026-06-16T09:27:57Z",
+      "fork": false
+    },
+    {
+      "name": "FusionOCR",
+      "title": "FusionOCR",
+      "emoji": "\ud83d\udc0d",
+      "blurb": "Multi-engine OCR pipeline \u2014 fuses Tesseract, EasyOCR, and Calamari via Levenshtein consensus voting, refined with FLAN-T5.",
+      "stack": [
+        "Python"
+      ],
+      "url": "https://github.com/MxxScott/FusionOCR",
       "homepage": null,
       "language": "Python",
       "stars": 0,
-      "pushedAt": null,
+      "pushedAt": "2026-06-13T06:45:13Z",
+      "fork": false
+    },
+    {
+      "name": "RISC-V_learn",
+      "title": "RISC V learn",
+      "emoji": "\ud83d\udd29",
+      "blurb": "Assembly practice \u2014 MIPS & RISC-V: arithmetic, branching, floats, and coursework.",
+      "stack": [
+        "Assembly",
+        "assembly",
+        "mips",
+        "risc-v"
+      ],
+      "url": "https://github.com/MxxScott/RISC-V_learn",
+      "homepage": null,
+      "language": "Assembly",
+      "stars": 0,
+      "pushedAt": "2026-04-28T21:46:51Z",
+      "fork": false
+    },
+    {
+      "name": "claw-code",
+      "title": "claw code",
+      "emoji": "\ud83d\udcc1",
+      "blurb": "Better Harness Tools, not merely storing the archive of leaked Claude Code but also make real things done. Now rewriting in Rust.",
+      "stack": [],
+      "url": "https://github.com/MxxScott/claw-code",
+      "homepage": null,
+      "language": "",
+      "stars": 0,
+      "pushedAt": "2026-03-31T17:43:58Z",
+      "fork": false
+    },
+    {
+      "name": "LUG-Christian-Club-Attendance",
+      "title": "LUG Christian Club Attendance",
+      "emoji": "\ud83c\udf10",
+      "blurb": "attendance tracker \u2014 web app with a Firebase/Firestore backend for member records and check-ins.",
+      "stack": [
+        "HTML",
+        "firebase",
+        "firestore",
+        "javascript"
+      ],
+      "url": "https://github.com/MxxScott/LUG-Christian-Club-Attendance",
+      "homepage": null,
+      "language": "HTML",
+      "stars": 0,
+      "pushedAt": "2025-08-13T08:39:46Z",
       "fork": false
     }
   ]
