@@ -85,10 +85,10 @@ export default function Skills() {
       <div className="flex min-h-full items-center px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <FlowItem from="left" order={0}>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-mint">Skills</p>
+            <p className="eyebrow"><span className="num">03</span>&nbsp;Skills</p>
           </FlowItem>
-          <FlowItem from="left" order={1}>
-            <h2 className="font-display mb-3 text-3xl font-bold md:text-4xl">Tools I work with</h2>
+          <FlowItem from="left" order={1} blur>
+            <h2 className="display-sm mb-3">Tools I work with</h2>
           </FlowItem>
           <FlowItem from="left" order={2}>
             <p className="mb-10 max-w-xl text-muted">
@@ -101,7 +101,7 @@ export default function Skills() {
               <FlowItem key={g.title} from={gi % 2 === 0 ? 'left' : 'right'} order={2 + gi}>
                 <motion.div
                   whileHover={{ y: -5, borderColor: 'rgba(91,130,255,0.45)' }}
-                  className="card h-full p-6"
+                  className="card card-lift h-full p-6"
                 >
                   <h3 className="font-display mb-4 flex items-center gap-2.5 text-lg font-semibold">
                     <span className="inline-block h-2 w-2 rounded-full bg-grad" />

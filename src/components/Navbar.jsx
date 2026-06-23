@@ -131,7 +131,7 @@ export default function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                className="link-underline text-sm font-medium text-muted transition-colors hover:text-ink"
               >
                 {l.label}
               </a>

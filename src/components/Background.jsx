@@ -36,7 +36,7 @@ export default function Background() {
       ) : (
         <Scene scrollRef={scrollRef} />
       )}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,#0a0d16_96%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#080b13_94%)]" />
     </div>
   );
 }

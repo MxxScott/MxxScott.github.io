@@ -15,7 +15,7 @@ function ProjectCard({ p, i, onOpen }) {
       <motion.article
         whileHover={{ y: -6 }}
         onClick={() => onOpen(p)}
-        className="card group relative flex h-full cursor-pointer flex-col overflow-hidden p-5"
+        className="card card-lift group relative flex h-full cursor-pointer flex-col overflow-hidden p-5"
       >
         {/* top accent bar */}
         <span className="absolute inset-x-0 top-0 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
@@ -26,6 +26,16 @@ function ProjectCard({ p, i, onOpen }) {
             FLAGSHIP
           </span>
         )}
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <div className="-mx-5 -mt-5 mb-4 aspect-video overflow-hidden border-b border-line bg-bg-soft">
+          <img
+            src={`https://opengraph.githubassets.com/1/MxxScott/${p.name}`}
+            alt={p.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+          />
+        </div>
 
         <div className="mb-3 flex items-center justify-between">
           <span className="text-2xl">{p.emoji}</span>
@@ -87,10 +97,10 @@ export default function Projects() {
         <div className="flex min-h-full items-center px-6 py-12">
           <div className="mx-auto w-full max-w-6xl">
             <FlowItem from="left" order={0}>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-mint">Projects</p>
+              <p className="eyebrow"><span className="num">04</span>&nbsp;Projects</p>
             </FlowItem>
-            <FlowItem from="left" order={1}>
-              <h2 className="font-display mb-3 text-3xl font-bold md:text-4xl">Selected work</h2>
+            <FlowItem from="left" order={1} blur>
+              <h2 className="display-sm mb-3">Selected work</h2>
             </FlowItem>
             <FlowItem from="left" order={2}>
               <p className="mb-8 max-w-2xl text-sm text-muted">

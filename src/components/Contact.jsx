@@ -4,32 +4,54 @@ import { FlowItem } from './Flow';
 
 const EMAIL = 'dlawal979@gmail.com';
 
+const SERVICES = [
+  { t: 'Frontend builds', d: 'Multi-page sites & component-driven apps in Nuxt and React / Next.js.' },
+  { t: 'Interactive & 3D', d: 'WebGL / R3F scenes and motion design that feels alive, not gimmicky.' },
+  { t: 'End-to-end delivery', d: 'From design system to build pipeline, deploy and CI — shipped.' },
+];
+
 export default function Contact() {
   return (
     <section className="section-scroll h-full overflow-y-auto">
       <div className="flex min-h-full items-center px-6 py-12">
-        <div className="mx-auto w-full max-w-4xl">
+        <div className="mx-auto w-full max-w-5xl">
+
           <FlowItem from="up" order={0}>
-            <div className="card relative overflow-hidden rounded-3xl px-6 py-14 text-center md:py-20">
+            <p className="eyebrow mb-4 justify-center"><span className="num">05</span>&nbsp;Contact</p>
+          </FlowItem>
+
+          <FlowItem from="up" order={1}>
+            <div className="card relative overflow-hidden rounded-3xl px-6 py-12 text-center md:py-16">
               <div className="pointer-events-none absolute -top-28 left-1/2 h-60 w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,99,240,0.25),transparent_70%)]" />
 
-              <h2 className="font-display relative mb-3 text-3xl font-bold md:text-4xl">
-                Let&apos;s build something serious.
-              </h2>
-              <p className="relative mx-auto mb-2 max-w-lg text-muted">
-                I&apos;m open to frontend engineering roles and ambitious projects. If you need
-                someone who ships complete, polished, modern web experiences — get in touch.
+              <h2 className="display-sm relative mb-3">Let&apos;s build something serious.</h2>
+              <p className="relative mx-auto mb-8 max-w-lg text-muted">
+                Open to frontend engineering roles and ambitious freelance projects. If you need
+                someone who ships complete, polished, modern web experiences — let&apos;s talk.
               </p>
-              <p className="relative mb-8 text-sm text-muted">David Lawal · Lagos, Nigeria</p>
 
-              <a
-                href={`mailto:${EMAIL}`}
-                className="relative inline-block rounded-full bg-grad px-8 py-3.5 text-sm font-semibold text-white shadow-[0_8px_30px_rgba(47,99,240,0.4)] transition-transform hover:-translate-y-0.5"
-              >
-                {EMAIL}
-              </a>
+              {/* light services row (hybrid positioning) */}
+              <div className="relative mx-auto mb-9 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
+                {SERVICES.map((s) => (
+                  <div key={s.t} className="card card-lift p-4">
+                    <p className="font-display text-sm font-semibold text-ink">{s.t}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-muted">{s.d}</p>
+                  </div>
+                ))}
+              </div>
 
-              <div className="relative mt-8 flex justify-center gap-4">
+              <div className="relative flex flex-wrap items-center justify-center gap-4">
+                <a href={`mailto:${EMAIL}`} className="btn-primary">
+                  {EMAIL}
+                </a>
+                <a href={`mailto:${EMAIL}?subject=Let%27s%20work%20together`} className="btn-ghost">
+                  Book a call <span aria-hidden>→</span>
+                </a>
+              </div>
+
+              <p className="relative mt-7 text-sm text-muted">David Lawal · Lagos, Nigeria</p>
+
+              <div className="relative mt-6 flex justify-center gap-4">
                 <a
                   href="https://github.com/MxxScott"
                   target="_blank"

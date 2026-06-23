@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useRef } from 'react';
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform, useMotionValue, useMotionTemplate } from 'framer-motion';
 
 const FlowCtx = createContext(null);
 
@@ -49,8 +49,12 @@ const DIRS = {
  * An element that flows with its section: slides in from `from`, dwells,
  * then continues out the other side. `order` staggers siblings.
  */
-export function FlowItem({ children, from = 'up', order = 0, className = '' }) {
-  const { progress, first, last } = useContext(FlowCtx);
+export function FlowItem({ children, from = 'up', order = 0, className = '', blur = false }) {
+  const ctx = useContext(FlowCtx);
+  const fallback = useMotionValue(1);
+  const progress = ctx?.progress ?? fallback;
+  const first = ctx?.first ?? false;
+  const last = ctx?.last ?? false;
   const d = DIRS[from] ?? DIRS.up;
   const o = Math.min(order, 6);
 
@@ -75,11 +79,32 @@ export function FlowItem({ children, from = 'up', order = 0, className = '' }) {
     first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
     first ? [0, d.exit.y] : last ? [d.enter.y, 0] : [d.enter.y, 0, 0, d.exit.y]
   );
+  const blurPx = useTransform(
+    progress,
+    first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
+    first ? [0, 12] : last ? [12, 0] : [12, 0, 0, 12]
+  );
+  const filterMv = useMotionTemplate`blur(${blurPx}px)`;
+  const blurStyle = blur ? { filter: filterMv } : {};
+
+  if (!ctx) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 24, filter: blur ? 'blur(12px)' : 'blur(0px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.7, delay: o * 0.06, ease: [0.21, 0.65, 0.32, 0.99] }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    );
+  }
 
   if (first) {
     // First section: entrance is a mount animation; scroll only drives the exit
     return (
-      <motion.div style={{ opacity, x, y }} className={className}>
+      <motion.div style={{ opacity, x, y, ...blurStyle }} className={className}>
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -92,7 +117,7 @@ export function FlowItem({ children, from = 'up', order = 0, className = '' }) {
   }
 
   return (
-    <motion.div style={{ opacity, x, y }} className={className}>
+    <motion.div style={{ opacity, x, y, ...blurStyle }} className={className}>
       {children}
     </motion.div>
   );

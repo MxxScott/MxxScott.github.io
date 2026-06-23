@@ -19,10 +19,10 @@ export default function About() {
       <div className="flex min-h-full items-center px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <FlowItem from="left" order={0}>
-            <p className="mb-2 text-sm font-semibold uppercase tracking-[3px] text-mint">About</p>
+            <p className="eyebrow"><span className="num">02</span>&nbsp;About</p>
           </FlowItem>
-          <FlowItem from="left" order={1}>
-            <h2 className="font-display mb-8 text-3xl font-bold md:text-4xl">
+          <FlowItem from="left" order={1} blur>
+            <h2 className="display-sm mb-8">
               Engineering the web, end to end.
             </h2>
           </FlowItem>
@@ -81,7 +81,7 @@ export default function About() {
               <div className="mb-6 grid grid-cols-3 gap-3">
                 {STATS.map((s, i) => (
                   <FlowItem key={s.value} from="up" order={3 + i}>
-                    <div className="card p-4">
+                    <div className="card card-lift p-4">
                       <h3 className="font-display text-xl font-bold text-grad md:text-2xl">{s.value}</h3>
                       <p className="mt-1 text-[11px] leading-snug text-muted">{s.label}</p>
                     </div>
@@ -111,7 +111,7 @@ export default function About() {
               </FlowItem>
 
               <FlowItem from="up" order={7}>
-                <div className="card p-4">
+                <div className="card card-lift p-4">
                   <ContributionGraph />
                 </div>
               </FlowItem>
