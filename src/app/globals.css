@@ -50,9 +50,10 @@ body {
 .display {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 0.92;
+  line-height: 1.0;
   letter-spacing: -0.03em;
-  font-size: clamp(2.8rem, 9vw, 7.25rem);
+  /* responsive to BOTH axes so it never overflows a short viewport */
+  font-size: clamp(2rem, min(6.2vw, 8.5vh), 5.25rem);
 }
 .display-sm {
   font-family: var(--font-display);

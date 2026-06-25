@@ -13,7 +13,7 @@ const SERVICES = [
 export default function Contact() {
   return (
     <section className="section-scroll h-full overflow-y-auto">
-      <div className="flex min-h-full items-center px-6 py-12">
+      <div className="flex min-h-full items-center px-6 py-24">
         <div className="mx-auto w-full max-w-5xl">
 
           <FlowItem from="up" order={0}>

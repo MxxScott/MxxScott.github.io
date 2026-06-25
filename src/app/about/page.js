@@ -18,8 +18,8 @@ export default function AboutPage() {
       <CursorGlow />
       <Navbar />
       <Background />
-      <div className="relative z-10 pt-28 pb-10">
-        <div className="mx-auto max-w-6xl px-6">
+      <div className="relative z-10 pb-10">
+        <div className="mx-auto max-w-6xl px-6 pt-28">
           <a href="/" className="link-underline text-sm text-muted transition-colors hover:text-ink">← Back home</a>
         </div>
         <About />

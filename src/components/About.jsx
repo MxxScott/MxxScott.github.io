@@ -16,7 +16,7 @@ export default function About() {
 
   return (
     <section className="section-scroll h-full overflow-y-auto">
-      <div className="flex min-h-full items-center px-6 py-12">
+      <div className="flex min-h-full items-start px-6 pb-12 pt-28">
         <div className="mx-auto w-full max-w-6xl">
           <FlowItem from="left" order={0}>
             <p className="eyebrow"><span className="num">02</span>&nbsp;About</p>

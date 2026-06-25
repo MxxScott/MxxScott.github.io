@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import Magnetic from './Magnetic';
 
 const LINKS = [
   { href: '#about',    label: 'About' },
@@ -15,7 +16,6 @@ function MobileSidebar({ open, onClose }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
-  // Lock body scroll when sidebar is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -27,7 +27,6 @@ function MobileSidebar({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
@@ -38,8 +37,6 @@ function MobileSidebar({ open, onClose }) {
             style={{ zIndex: 9998 }}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           />
-
-          {/* Sidebar panel */}
           <motion.div
             key="sidebar"
             initial={{ x: '100%' }}
@@ -49,13 +46,8 @@ function MobileSidebar({ open, onClose }) {
             style={{ zIndex: 9999 }}
             className="fixed right-0 top-0 flex h-full w-72 flex-col bg-card border-l border-line"
           >
-            {/* Header */}
             <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <a
-                href="#top"
-                onClick={onClose}
-                className="font-display text-lg font-bold tracking-wide"
-              >
+              <a href="#top" onClick={onClose} className="font-display text-lg font-bold tracking-wide">
                 David<span className="text-grad">Lawal</span>
               </a>
               <button
@@ -68,8 +60,6 @@ function MobileSidebar({ open, onClose }) {
                 </svg>
               </button>
             </div>
-
-            {/* Links */}
             <nav className="flex flex-col gap-1 px-4 py-6">
               {LINKS.map((l, i) => (
                 <motion.a
@@ -85,8 +75,6 @@ function MobileSidebar({ open, onClose }) {
                 </motion.a>
               ))}
             </nav>
-
-            {/* Footer CTA */}
             <div className="mt-auto border-t border-line px-6 py-6">
               <a
                 href="/David-Lawal-Resume.pdf"
@@ -108,13 +96,43 @@ function MobileSidebar({ open, onClose }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState('');
   const { scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 28 });
 
+  // solidify the bar once you leave the hero
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // track the section currently in view → drives the sliding indicator
+  useEffect(() => {
+    const ids = ['about', 'skills', 'projects', 'contact'];
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <>
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/70 backdrop-blur-xl">
-        {/* Scroll progress bar */}
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+          scrolled
+            ? 'border-b border-line bg-bg/80 backdrop-blur-xl'
+            : 'border-b border-transparent bg-transparent'
+        }`}
+      >
         <motion.div
           className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-grad"
           style={{ scaleX: progress }}
@@ -125,26 +143,35 @@ export default function Navbar() {
             David<span className="text-grad">Lawal</span>
           </a>
 
-          {/* Desktop links */}
-          <div className="hidden items-center gap-8 md:flex">
-            {LINKS.slice(0, 3).map((l) => (
+          <div className="hidden items-center gap-1 md:flex">
+            {LINKS.slice(0, 3).map((l) => {
+              const id = l.href.slice(1);
+              const isActive = active === id;
+              return (
+                <a key={l.href} href={l.href} className="relative px-4 py-2 text-sm font-medium">
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 -z-10 rounded-full border border-line bg-white/10"
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className={isActive ? 'text-ink' : 'text-muted transition-colors hover:text-ink'}>
+                    {l.label}
+                  </span>
+                </a>
+              );
+            })}
+            <Magnetic className="ml-3">
               <a
-                key={l.href}
-                href={l.href}
-                className="link-underline text-sm font-medium text-muted transition-colors hover:text-ink"
+                href="#contact"
+                className="block rounded-full bg-grad px-5 py-2 text-sm font-semibold text-white shadow-[0_8px_26px_-8px_rgba(47,99,240,0.7)]"
               >
-                {l.label}
+                Contact
               </a>
-            ))}
-            <a
-              href="#contact"
-              className="rounded-full bg-grad px-5 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-            >
-              Contact
-            </a>
+            </Magnetic>
           </div>
 
-          {/* Hamburger — mobile only */}
           <button
             className="flex flex-col gap-[5px] md:hidden"
             onClick={() => setOpen(true)}

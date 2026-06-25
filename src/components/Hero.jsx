@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FlowItem } from './Flow';
+import Magnetic from './Magnetic';
 
 const MARQUEE = [
   'Nuxt', 'React', 'Next.js', 'TypeScript', 'Three.js / R3F',
@@ -13,7 +14,7 @@ export default function Hero() {
   const hintOpacity = useTransform(scrollY, [0, 160], [1, 0]);
 
   return (
-    <header className="relative flex h-full flex-col items-center justify-center overflow-hidden">
+    <header className="relative flex h-full flex-col items-center justify-center overflow-hidden px-4 pb-28 pt-[68px]">
       {/* cinematic framing — spotlight on the 3D core + legibility gradient */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute left-1/2 top-1/2 h-[82vmin] w-[82vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,99,240,0.20),transparent_62%)] blur-2xl" />
@@ -61,9 +62,11 @@ export default function Hero() {
 
         <FlowItem order={3} from="up">
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#projects" className="btn-primary">
-              View My Work <span aria-hidden>→</span>
-            </a>
+            <Magnetic>
+              <a href="#projects" className="btn-primary">
+                View My Work <span aria-hidden>→</span>
+              </a>
+            </Magnetic>
             <a href="/David-Lawal-Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost">
               Download CV <span aria-hidden>↓</span>
             </a>
@@ -75,7 +78,7 @@ export default function Hero() {
       </div>
 
       {/* kinetic tech marquee */}
-      <FlowItem order={4} from="up" className="relative z-10 mt-16 w-full">
+      <FlowItem order={4} from="up" className="absolute inset-x-0 bottom-0 z-10">
         <div className="marquee w-full border-y border-line bg-white/[0.015] py-3">
           <div className="marquee-track">
             {[...MARQUEE, ...MARQUEE].map((t, i) => (
@@ -91,7 +94,7 @@ export default function Hero() {
         style={{ opacity: hintOpacity }}
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-xs tracking-[3px] text-muted"
+        className="absolute bottom-20 left-1/2 z-10 -translate-x-1/2 text-xs tracking-[3px] text-muted"
       >
         SCROLL ▾
       </motion.div>
