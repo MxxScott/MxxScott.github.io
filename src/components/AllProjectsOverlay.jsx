@@ -138,7 +138,17 @@ function RepoCard({ p }) {
       whileHover={{ y: -4 }}
       className="card group relative flex flex-col gap-2 overflow-hidden p-5"
     >
-      <span className="absolute inset-x-0 top-0 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
+      <span className="absolute inset-x-0 top-0 z-10 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
+
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <div className="-mx-5 -mt-5 mb-1 aspect-video overflow-hidden border-b border-line bg-bg-soft">
+        <img
+          src={`https://opengraph.githubassets.com/1/MxxScott/${p.name}`}
+          alt={p.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+        />
+      </div>
 
       <div className="flex items-start justify-between gap-2">
         <span className="text-xl leading-none">{p.emoji}</span>

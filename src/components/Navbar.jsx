@@ -6,10 +6,10 @@ import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import Magnetic from './Magnetic';
 
 const LINKS = [
-  { href: '#about',    label: 'About' },
-  { href: '#skills',   label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact',  label: 'Contact' },
+  { href: '/#about',    label: 'About' },
+  { href: '/#skills',   label: 'Skills' },
+  { href: '/#projects', label: 'Projects' },
+  { href: '/#contact',  label: 'Contact' },
 ];
 
 function MobileSidebar({ open, onClose }) {
@@ -47,7 +47,7 @@ function MobileSidebar({ open, onClose }) {
             className="fixed right-0 top-0 flex h-full w-72 flex-col bg-card border-l border-line"
           >
             <div className="flex items-center justify-between border-b border-line px-6 py-5">
-              <a href="#top" onClick={onClose} className="font-display text-lg font-bold tracking-wide">
+              <a href="/#top" onClick={onClose} className="font-display text-lg font-bold tracking-wide">
                 David<span className="text-grad">Lawal</span>
               </a>
               <button
@@ -139,13 +139,13 @@ export default function Navbar() {
         />
 
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a href="#top" className="font-display text-xl font-bold tracking-wide">
+          <a href="/#top" className="font-display text-xl font-bold tracking-wide">
             David<span className="text-grad">Lawal</span>
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
             {LINKS.slice(0, 3).map((l) => {
-              const id = l.href.slice(1);
+              const id = l.href.split('#')[1];
               const isActive = active === id;
               return (
                 <a key={l.href} href={l.href} className="relative px-4 py-2 text-sm font-medium">
@@ -164,7 +164,7 @@ export default function Navbar() {
             })}
             <Magnetic className="ml-3">
               <a
-                href="#contact"
+                href="/#contact"
                 className="block rounded-full bg-grad px-5 py-2 text-sm font-semibold text-white shadow-[0_8px_26px_-8px_rgba(47,99,240,0.7)]"
               >
                 Contact
