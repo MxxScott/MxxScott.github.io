@@ -56,6 +56,16 @@ npm run build           # static export to ./out
 npm run deploy          # build + publish to GitHub Pages
 ```
 
+### Project preview images
+
+The GitHub Actions project-generation step automatically looks for the first image in
+each repository README, downloads it into `public/project-previews/`, and connects it to
+the generated project card. Push a README image to a project repository, then the daily
+refresh or the next portfolio deployment will update its preview automatically.
+
+Curated local previews take precedence, and projects without a usable README image use
+the generated project-study artwork instead. No `projects.json` editing is required.
+
 ## Contact
 
 dlawal979@gmail.com · [github.com/MxxScott](https://github.com/MxxScott)
