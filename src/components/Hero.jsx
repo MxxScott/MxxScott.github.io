@@ -22,7 +22,7 @@ export default function Hero() {
         <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-bg/80 to-transparent" />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 z-10 hidden md:block">
+      <div className="pointer-events-none absolute inset-0 z-20 hidden md:block">
         <span className="absolute left-8 top-28 text-[11px] uppercase tracking-[0.32em] text-muted">
           Portfolio — &rsquo;26
         </span>
@@ -31,7 +31,7 @@ export default function Hero() {
         </span>
       </div>
 
-      <div className="glass-panel relative z-10 mx-auto w-full max-w-5xl rounded-[28px] border border-white/10 px-6 py-12 text-center shadow-[0_30px_100px_-50px_rgba(47,99,240,0.85)] sm:px-10 md:py-16">
+      <div className="hero-panel glass-panel relative z-10 mx-auto w-full max-w-5xl rounded-[28px] border border-white/10 px-6 py-12 text-center shadow-[0_30px_100px_-50px_rgba(47,99,240,0.85)] sm:px-10 md:py-16">
         <FlowItem order={0} from="up">
           <div className="mb-7 flex flex-wrap items-center justify-center gap-4">
             <span className="eyebrow"><span className="num">01</span>&nbsp;Frontend Engineer</span>
