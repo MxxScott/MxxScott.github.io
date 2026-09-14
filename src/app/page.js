@@ -29,7 +29,7 @@ export default function Home() {
         <FlowSection id="skills">
           <Skills />
         </FlowSection>
-        <FlowSection id="projects">
+        <FlowSection id="projects" compact>
           <Projects />
         </FlowSection>
         <FlowSection id="contact" last>

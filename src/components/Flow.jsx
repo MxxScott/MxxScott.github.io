@@ -18,7 +18,7 @@ const FlowCtx = createContext(null);
  * Phase map (section progress 0→1):
  *   enter 0.30→0.52 · hold 0.52→0.86 (the dwell) · exit 0.86→1
  */
-export function FlowSection({ id, children, first = false, last = false }) {
+export function FlowSection({ id, children, first = false, last = false, compact = false }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -32,7 +32,7 @@ export function FlowSection({ id, children, first = false, last = false }) {
     bounce: 0.08,
   });
 
-  const height = first ? 'h-[170vh]' : last ? 'h-[150vh]' : 'h-[200vh]';
+  const height = first ? 'h-[170vh]' : last ? 'h-[150vh]' : compact ? 'h-[128vh]' : 'h-[200vh]';
 
   return (
     <div id={id} ref={ref} className={`relative ${height}`}>
