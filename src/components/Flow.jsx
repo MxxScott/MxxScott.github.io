@@ -24,8 +24,13 @@ export function FlowSection({ id, children, first = false, last = false }) {
     target: ref,
     offset: ['start end', 'end end'],
   });
-  // spring-smoothed so transitions glide instead of tracking raw scroll
-  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 });
+
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.45,
+    bounce: 0.08,
+  });
 
   const height = first ? 'h-[170vh]' : last ? 'h-[150vh]' : 'h-[200vh]';
 
@@ -58,12 +63,11 @@ export function FlowItem({ children, from = 'up', order = 0, className = '', blu
   const d = DIRS[from] ?? DIRS.up;
   const o = Math.min(order, 6);
 
-  const e0 = 0.3 + o * 0.018;
-  const e1 = 0.52 + o * 0.018;
-  const x0 = 0.86 + o * 0.012;
-  const x1 = Math.min(0.97 + o * 0.005, 1);
+  const e0 = 0.22 + o * 0.016;
+  const e1 = 0.46 + o * 0.016;
+  const x0 = 0.8 + o * 0.011;
+  const x1 = Math.min(0.95 + o * 0.005, 1);
 
-  // Build keyframe ranges per section role (hooks must run unconditionally)
   const opacity = useTransform(
     progress,
     first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
@@ -79,10 +83,15 @@ export function FlowItem({ children, from = 'up', order = 0, className = '', blu
     first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
     first ? [0, d.exit.y] : last ? [d.enter.y, 0] : [d.enter.y, 0, 0, d.exit.y]
   );
+  const scale = useTransform(
+    progress,
+    first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
+    first ? [1, 0.98] : last ? [1.02, 1] : [1.02, 1, 1, 1.02]
+  );
   const blurPx = useTransform(
     progress,
     first ? [x0, x1] : last ? [e0, e1] : [e0, e1, x0, x1],
-    first ? [0, 12] : last ? [12, 0] : [12, 0, 0, 12]
+    first ? [0, 10] : last ? [10, 0] : [10, 0, 0, 10]
   );
   const filterMv = useMotionTemplate`blur(${blurPx}px)`;
   const blurStyle = blur ? { filter: filterMv } : {};
@@ -102,13 +111,12 @@ export function FlowItem({ children, from = 'up', order = 0, className = '', blu
   }
 
   if (first) {
-    // First section: entrance is a mount animation; scroll only drives the exit
     return (
-      <motion.div style={{ opacity, x, y, ...blurStyle }} className={className}>
+      <motion.div style={{ opacity, x, y, scale, ...blurStyle }} className={className}>
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 + order * 0.12, ease: [0.21, 0.65, 0.32, 0.99] }}
+          initial={{ opacity: 0, y: 20, filter: blur ? 'blur(10px)' : 'blur(0px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ duration: 0.8, delay: 0.15 + order * 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           {children}
         </motion.div>
@@ -117,7 +125,7 @@ export function FlowItem({ children, from = 'up', order = 0, className = '', blu
   }
 
   return (
-    <motion.div style={{ opacity, x, y, ...blurStyle }} className={className}>
+    <motion.div style={{ opacity, x, y, scale, ...blurStyle }} className={className}>
       {children}
     </motion.div>
   );
