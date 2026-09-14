@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import fallbackData from '@/data/projects.json';
+import ProjectArtwork from './ProjectArtwork';
 
 /* ─── constants ─────────────────────────────────────────────────────────── */
 
@@ -140,14 +141,10 @@ function RepoCard({ p }) {
     >
       <span className="absolute inset-x-0 top-0 z-10 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <div className="-mx-5 -mt-5 mb-1 aspect-video overflow-hidden border-b border-line bg-bg-soft">
-        <img
-          src={`https://opengraph.githubassets.com/1/MxxScott/${p.name}`}
-          alt={p.title}
-          loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-        />
+      <div className="-mx-5 -mt-5 mb-1 aspect-video overflow-hidden border-b border-line">
+        <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]">
+          <ProjectArtwork project={p} className="h-full w-full" />
+        </div>
       </div>
 
       <div className="flex items-start justify-between gap-2">

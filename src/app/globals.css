@@ -1,18 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surfaces — deepened a touch for more contrast/depth */
   --color-bg:       #080b13;
   --color-bg-soft:  #0d111c;
   --color-card:     #0f1422;
   --color-line:     rgba(124, 152, 255, 0.12);
   --color-ink:      #f2f4fb;
   --color-muted:    #8b93a9;
-  /* Accents */
   --color-accent:   #2f63f0;
   --color-mint:     #5b82ff;
-  --color-iris:     #9b8cff;   /* secondary violet, used sparingly */
-  --color-ember:    #ff8a5b;   /* warm highlight for accents/numbers */
+  --color-iris:     #9b8cff;
+  --color-ember:    #ff8a5b;
 
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-body:    var(--font-inter), sans-serif;
@@ -20,13 +18,14 @@
 
 html { scroll-behavior: smooth; }
 
-/* custom cursor: hide native on fine pointers */
 @media (pointer: fine) {
   html, html * { cursor: none !important; }
 }
 
 body {
-  background: var(--color-bg);
+  background:
+    radial-gradient(circle at top, rgba(55, 86, 196, 0.2), transparent 28%),
+    linear-gradient(180deg, #070b13 0%, #090d18 100%);
   color: var(--color-ink);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -34,6 +33,50 @@ body {
 }
 
 ::selection { background: #2f63f0; color: #fff; }
+
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -12px, 0) scale(1.04); }
+}
+
+@keyframes drift {
+  0% { transform: translate3d(-10px, 0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate3d(12px, -8px, 0) scale(1.08); opacity: 1; }
+  100% { transform: translate3d(-10px, 0, 0) scale(1); opacity: 0.7; }
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(10,14,24,0.8), rgba(15,21,33,0.6));
+  border: 1px solid rgba(124, 152, 255, 0.18);
+  box-shadow: 0 24px 80px -40px rgba(47,99,240,0.7), inset 0 1px 0 rgba(255,255,255,0.04);
+  backdrop-filter: blur(14px);
+}
+
+.hero-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-shell::before {
+  content: "";
+  position: absolute;
+  inset: 12% 14% auto;
+  height: 60%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(112, 150, 255, 0.24), transparent 58%);
+  filter: blur(18px);
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.ambient-ring {
+  position: absolute;
+  inset: 8% 10% auto;
+  height: 420px;
+  border: 1px solid rgba(124, 152, 255, 0.14);
+  border-radius: 50%;
+  box-shadow: inset 0 0 60px rgba(82, 110, 255, 0.12), 0 0 50px rgba(17, 34, 74, 0.2);
+  animation: drift 12s ease-in-out infinite;
+}
 
 /* ── Typography helpers ─────────────────────────────────────── */
 .text-grad {

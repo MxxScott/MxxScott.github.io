@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { FlowItem } from './Flow';
 import data from '@/data/projects.json';
 import AllProjectsOverlay from './AllProjectsOverlay';
+import ProjectArtwork from './ProjectArtwork';
 import ProjectDrawer from './ProjectDrawer';
 
 const DIRS = ['left', 'up', 'right'];
@@ -27,14 +28,10 @@ function ProjectCard({ p, i, onOpen }) {
           </span>
         )}
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <div className="-mx-5 -mt-5 mb-4 aspect-video overflow-hidden border-b border-line bg-bg-soft">
-          <img
-            src={`https://opengraph.githubassets.com/1/MxxScott/${p.name}`}
-            alt={p.title}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-          />
+        <div className="-mx-5 -mt-5 mb-4 aspect-video overflow-hidden border-b border-line">
+          <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]">
+            <ProjectArtwork project={p} className="h-full w-full" />
+          </div>
         </div>
 
         <div className="mb-3 flex items-center justify-between">
