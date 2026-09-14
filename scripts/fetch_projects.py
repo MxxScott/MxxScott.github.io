@@ -18,15 +18,24 @@ Runs in CI before every deploy and on a daily schedule (see deploy.yml).
 """
 
 import json
+import mimetypes
+import re
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import urljoin
 from datetime import datetime, timezone
 from pathlib import Path
 
 USERNAME = "MxxScott"
 DEFAULT_FLAGSHIP = "roar-frontend"
 OUTPUT = Path(__file__).resolve().parent.parent / "src" / "data" / "projects.json"
+PREVIEW_DIR = OUTPUT.parent.parent.parent / "public" / "project-previews"
+PREVIEW_EXTENSIONS = (".png", ".jpg", ".jpeg", ".webp", ".avif")
+README_IMAGE_RE = re.compile(
+    r"!\[[^\]]*\]\(([^)\s]+)|<img[^>]+src=[\"']([^\"']+)",
+    re.IGNORECASE,
+)
 
 # Always excluded from all lists
 EXCLUDE = {f"{USERNAME}.github.io", "Hello-World", "Test-Repo"}
@@ -62,6 +71,7 @@ CURATED = {
             "platform, documented like production code."
         ),
         "stack": ["Nuxt", "Vue 3", "Tailwind", "TypeScript"],
+        "previewImage": "/project-onlearn.png",
     },
     "Wings-Height-Insurance-Brokers-Limited": {
         "title": "Wings Height Insurance Brokers",
@@ -71,6 +81,7 @@ CURATED = {
             "bookings and service pages. Client-style delivery, framework-free."
         ),
         "stack": ["HTML5", "CSS3", "JavaScript"],
+        "previewImage": "/project-wings.png",
     },
     "Anime_Abyss": {
         "title": "Anime Abyss",
@@ -80,12 +91,15 @@ CURATED = {
             "interactions on a modern Nuxt 4 foundation."
         ),
         "stack": ["Nuxt 4", "Vue 3", "Tailwind"],
+        "homepage": "https://anime-abyss.onrender.com/",
+        "previewImage": "/project-anime-abyss.png",
     },
     "Maneyger-7.0": {
         "title": "Maneyger 7.0",
         "emoji": "\U0001f4b0",   # money bag
         "blurb": "A personal finance manager with hand-built UI logic in vanilla JavaScript.",
         "stack": ["JavaScript", "Bootstrap", "CSS"],
+        "previewImage": "/project-maneyger.png",
     },
     "Inventory-Management-System": {
         "title": "Inventory Manager CLI",
@@ -108,6 +122,67 @@ def api_get(path):
         return json.load(resp)
 
 
+def find_preview(repo_name):
+    """Resolve a local preview by repository name without editing project data."""
+    for extension in PREVIEW_EXTENSIONS:
+        candidate = PREVIEW_DIR / f"{repo_name}{extension}"
+        if candidate.exists():
+            return f"/project-previews/{candidate.name}"
+    return None
+
+
+def download_readme_preview(repo):
+    """Download the first README image into the generated local preview directory."""
+    existing = find_preview(repo["name"])
+    if existing:
+        return existing
+
+    try:
+        req = urllib.request.Request(
+            f"https://api.github.com/repos/{USERNAME}/{repo['name']}/readme",
+            headers={
+                "User-Agent": "portfolio-build",
+                "Accept": "application/vnd.github.raw+json",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=20) as response:
+            readme = response.read().decode("utf-8", errors="replace")
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return None
+
+    match = README_IMAGE_RE.search(readme)
+    if not match:
+        return None
+
+    image_url = match.group(1) or match.group(2)
+    if image_url.startswith("/"):
+        image_url = urljoin(
+            f"https://github.com/{USERNAME}/{repo['name']}/",
+            image_url,
+        )
+    elif not image_url.startswith(("http://", "https://")):
+        image_url = (
+            f"https://raw.githubusercontent.com/{USERNAME}/{repo['name']}/"
+            f"{repo.get('default_branch', 'main')}/{image_url}"
+        )
+
+    try:
+        with urllib.request.urlopen(
+            urllib.request.Request(image_url, headers={"User-Agent": "portfolio-build"}),
+            timeout=20,
+        ) as response:
+            content_type = response.headers.get_content_type()
+            extension = mimetypes.guess_extension(content_type) or ".png"
+            if extension not in PREVIEW_EXTENSIONS:
+                extension = ".png"
+            PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+            destination = PREVIEW_DIR / f"{repo['name']}{extension}"
+            destination.write_bytes(response.read())
+            return f"/project-previews/{destination.name}"
+    except (urllib.error.URLError, TimeoutError, OSError):
+        return None
+
+
 def to_card(repo, curated=None):
     """Shape a repo (plus optional curated overrides) into a card dict."""
     curated = curated or {}
@@ -121,11 +196,31 @@ def to_card(repo, curated=None):
         "blurb": curated.get("blurb") or repo.get("description") or "",
         "stack": curated.get("stack") or raw_stack,
         "url": repo["html_url"],
-        "homepage": repo.get("homepage") or None,
+        "homepage": curated.get("homepage", repo.get("homepage") or None),
+        "previewImage": (
+            find_preview(repo["name"])
+            or curated.get("previewImage")
+            or download_readme_preview(repo)
+        ),
         "language": language,
         "stars": repo.get("stargazers_count", 0),
         "pushedAt": repo.get("pushed_at"),
         "fork": repo.get("fork", False),
+    }
+
+
+def read_previous_previews():
+    """Keep explicitly curated local previews across generated data refreshes."""
+    if not OUTPUT.exists():
+        return {}
+    try:
+        previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {
+        project.get("name"): project.get("previewImage")
+        for project in previous.get("all", [])
+        if project.get("name") and project.get("previewImage")
     }
 
 
@@ -162,16 +257,22 @@ def main():
     featured_names.insert(0, flagship)
 
     by_name = {r["name"]: r for r in visible}
+    previous_previews = read_previous_previews()
     featured = []
     for name in featured_names:
         repo = by_name.get(name)
         if not repo:
             continue
         card = to_card(repo, CURATED.get(name))
+        card["previewImage"] = card.get("previewImage") or previous_previews.get(name)
         card["flag"] = "FLAGSHIP" if name == flagship else None
         featured.append(card)
 
-    all_projects = [to_card(r, CURATED.get(r["name"])) for r in visible]
+    all_projects = []
+    for repo in visible:
+        card = to_card(repo, CURATED.get(repo["name"]))
+        card["previewImage"] = card.get("previewImage") or previous_previews.get(repo["name"])
+        all_projects.append(card)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     payload = {

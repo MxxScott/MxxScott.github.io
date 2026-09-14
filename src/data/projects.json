@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-16T12:58:50+00:00",
+  "generatedAt": "2026-09-14T23:41:39+00:00",
   "flagship": "FusionOCR",
   "featured": [
     {
@@ -12,11 +12,31 @@
       ],
       "url": "https://github.com/MxxScott/FusionOCR",
       "homepage": null,
+      "previewImage": null,
       "language": "Python",
       "stars": 0,
       "pushedAt": "2026-06-13T06:45:13Z",
       "fork": false,
       "flag": "FLAGSHIP"
+    },
+    {
+      "name": "Anime_Abyss",
+      "title": "Anime Abyss",
+      "emoji": "\ud83c\udf0a",
+      "blurb": "An anime discovery homepage with custom styling and scripted interactions on a modern Nuxt 4 foundation.",
+      "stack": [
+        "Nuxt 4",
+        "Vue 3",
+        "Tailwind"
+      ],
+      "url": "https://github.com/MxxScott/Anime_Abyss",
+      "homepage": "https://anime-abyss.onrender.com/",
+      "previewImage": "/project-previews/Anime_Abyss.png",
+      "language": "CSS",
+      "stars": 0,
+      "pushedAt": "2026-09-14T14:13:35Z",
+      "fork": false,
+      "flag": null
     },
     {
       "name": "terminal-games-cpp",
@@ -28,6 +48,7 @@
       ],
       "url": "https://github.com/MxxScott/terminal-games-cpp",
       "homepage": null,
+      "previewImage": null,
       "language": "C++",
       "stars": 0,
       "pushedAt": "2026-06-16T10:56:29Z",
@@ -46,6 +67,7 @@
       ],
       "url": "https://github.com/MxxScott/Inventory-Management-System",
       "homepage": null,
+      "previewImage": null,
       "language": "Python",
       "stars": 0,
       "pushedAt": "2026-06-16T10:55:49Z",
@@ -65,7 +87,7 @@
       ],
       "url": "https://github.com/MxxScott/Onlearn",
       "homepage": "https://onlearn2025.netlify.app/",
-      "previewImage": "/project-onlearn.png",
+      "previewImage": "/project-previews/Onlearn.png",
       "language": "Vue",
       "stars": 0,
       "pushedAt": "2026-06-16T10:55:35Z",
@@ -82,11 +104,30 @@
       ],
       "url": "https://github.com/MxxScott/FusionOCR-Tester",
       "homepage": null,
+      "previewImage": null,
       "language": "HTML",
       "stars": 0,
       "pushedAt": "2026-06-16T09:35:46Z",
       "fork": false,
       "flag": null
+    }
+  ],
+  "all": [
+    {
+      "name": "express-auth-api",
+      "title": "express auth api",
+      "emoji": "\ud83d\udfe8",
+      "blurb": "",
+      "stack": [
+        "JavaScript"
+      ],
+      "url": "https://github.com/MxxScott/express-auth-api",
+      "homepage": null,
+      "previewImage": null,
+      "language": "JavaScript",
+      "stars": 0,
+      "pushedAt": "2026-09-14T15:17:14Z",
+      "fork": false
     },
     {
       "name": "Anime_Abyss",
@@ -100,15 +141,32 @@
       ],
       "url": "https://github.com/MxxScott/Anime_Abyss",
       "homepage": "https://anime-abyss.onrender.com/",
-      "previewImage": "/project-anime-abyss.png",
+      "previewImage": "/project-previews/Anime_Abyss.png",
       "language": "CSS",
       "stars": 0,
-      "pushedAt": "2026-06-16T09:27:57Z",
-      "fork": false,
-      "flag": null
-    }
-  ],
-  "all": [
+      "pushedAt": "2026-09-14T14:13:35Z",
+      "fork": false
+    },
+    {
+      "name": "Xplorem",
+      "title": "Xplorem",
+      "emoji": "\ud83d\udfe8",
+      "blurb": "A client-side React single-page application for media discovery. Built with Vite and Tailwind, utilizing local storage and a zero-cost, serverless architecture to manage watchlists and markdown reviews.",
+      "stack": [
+        "JavaScript",
+        "api-integration",
+        "frontend",
+        "javascript",
+        "localstorage"
+      ],
+      "url": "https://github.com/MxxScott/Xplorem",
+      "homepage": "https://xplorem.onrender.com/",
+      "previewImage": "/project-previews/Xplorem.jpg",
+      "language": "JavaScript",
+      "stars": 0,
+      "pushedAt": "2026-09-14T12:15:52Z",
+      "fork": false
+    },
     {
       "name": "Wings-Height-Insurance-Brokers-Limited",
       "title": "Wings Height Insurance Brokers",
@@ -121,10 +179,10 @@
       ],
       "url": "https://github.com/MxxScott/Wings-Height-Insurance-Brokers-Limited",
       "homepage": "https://mxxscott.github.io/Wings-Height-Insurance-Brokers-Limited/",
-      "previewImage": "/project-wings.png",
+      "previewImage": "/project-previews/Wings-Height-Insurance-Brokers-Limited.png",
       "language": "HTML",
       "stars": 1,
-      "pushedAt": "2026-06-16T10:56:46Z",
+      "pushedAt": "2026-09-09T13:15:54Z",
       "fork": false
     },
     {
@@ -137,6 +195,7 @@
       ],
       "url": "https://github.com/MxxScott/terminal-games-cpp",
       "homepage": null,
+      "previewImage": null,
       "language": "C++",
       "stars": 0,
       "pushedAt": "2026-06-16T10:56:29Z",
@@ -154,6 +213,7 @@
       ],
       "url": "https://github.com/MxxScott/Inventory-Management-System",
       "homepage": null,
+      "previewImage": null,
       "language": "Python",
       "stars": 0,
       "pushedAt": "2026-06-16T10:55:49Z",
@@ -172,7 +232,7 @@
       ],
       "url": "https://github.com/MxxScott/Onlearn",
       "homepage": "https://onlearn2025.netlify.app/",
-      "previewImage": "/project-onlearn.png",
+      "previewImage": "/project-previews/Onlearn.png",
       "language": "Vue",
       "stars": 0,
       "pushedAt": "2026-06-16T10:55:35Z",
@@ -188,6 +248,7 @@
       ],
       "url": "https://github.com/MxxScott/C_learn",
       "homepage": null,
+      "previewImage": null,
       "language": "C",
       "stars": 0,
       "pushedAt": "2026-06-16T10:55:12Z",
@@ -205,7 +266,7 @@
       ],
       "url": "https://github.com/MxxScott/Maneyger-7.0",
       "homepage": "https://mxxscott.github.io/Maneyger-7.0/",
-      "previewImage": "/project-maneyger.png",
+      "previewImage": "/project-previews/Maneyger-7.0.png",
       "language": "JavaScript",
       "stars": 0,
       "pushedAt": "2026-06-16T09:58:39Z",
@@ -221,27 +282,10 @@
       ],
       "url": "https://github.com/MxxScott/FusionOCR-Tester",
       "homepage": null,
+      "previewImage": null,
       "language": "HTML",
       "stars": 0,
       "pushedAt": "2026-06-16T09:35:46Z",
-      "fork": false
-    },
-    {
-      "name": "Anime_Abyss",
-      "title": "Anime Abyss",
-      "emoji": "\ud83c\udf0a",
-      "blurb": "An anime discovery homepage with custom styling and scripted interactions on a modern Nuxt 4 foundation.",
-      "stack": [
-        "Nuxt 4",
-        "Vue 3",
-        "Tailwind"
-      ],
-      "url": "https://github.com/MxxScott/Anime_Abyss",
-      "homepage": "https://anime-abyss.onrender.com/",
-      "previewImage": "/project-anime-abyss.png",
-      "language": "CSS",
-      "stars": 0,
-      "pushedAt": "2026-06-16T09:27:57Z",
       "fork": false
     },
     {
@@ -254,6 +298,7 @@
       ],
       "url": "https://github.com/MxxScott/FusionOCR",
       "homepage": null,
+      "previewImage": null,
       "language": "Python",
       "stars": 0,
       "pushedAt": "2026-06-13T06:45:13Z",
@@ -272,6 +317,7 @@
       ],
       "url": "https://github.com/MxxScott/RISC-V_learn",
       "homepage": null,
+      "previewImage": null,
       "language": "Assembly",
       "stars": 0,
       "pushedAt": "2026-04-28T21:46:51Z",
@@ -285,6 +331,7 @@
       "stack": [],
       "url": "https://github.com/MxxScott/claw-code",
       "homepage": null,
+      "previewImage": "/project-previews/claw-code.jpg",
       "language": "",
       "stars": 0,
       "pushedAt": "2026-03-31T17:43:58Z",
@@ -303,6 +350,7 @@
       ],
       "url": "https://github.com/MxxScott/LUG-Christian-Club-Attendance",
       "homepage": null,
+      "previewImage": null,
       "language": "HTML",
       "stars": 0,
       "pushedAt": "2025-08-13T08:39:46Z",
