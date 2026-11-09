@@ -22,7 +22,7 @@ export default function Contact() {
 
           <FlowItem from="up" order={1}>
             <div className="card relative overflow-hidden rounded-3xl px-6 py-12 text-center md:py-16">
-              <div className="pointer-events-none absolute -top-28 left-1/2 h-60 w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,99,240,0.25),transparent_70%)]" />
+              <div className="pointer-events-none absolute -top-28 left-1/2 h-60 w-105 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(47,99,240,0.25),transparent_70%)]" />
 
               <h2 className="display-sm relative mb-3">Let&apos;s build something serious.</h2>
               <p className="relative mx-auto mb-8 max-w-lg text-muted">

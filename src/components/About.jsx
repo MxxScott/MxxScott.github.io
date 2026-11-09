@@ -31,7 +31,7 @@ export default function About() {
             <FlowItem from="left" order={2}>
               <motion.div
                 whileHover={{ rotate: 0, scale: 1.02 }}
-                className="group relative mx-auto w-full max-w-[270px] -rotate-2 transition-transform"
+                className="group relative mx-auto w-full max-w-67.5 -rotate-2 transition-transform"
               >
                 <div className="absolute -inset-1 rounded-3xl bg-grad opacity-25 blur-lg transition-opacity group-hover:opacity-50" />
                 <div className="card relative overflow-hidden rounded-3xl">
@@ -48,7 +48,7 @@ export default function About() {
                       <span className="font-display text-6xl font-bold text-grad">DL</span>
                     </div>
                   )}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg via-bg/60 to-transparent px-5 pb-4 pt-12">
+                  <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-bg via-bg/60 to-transparent px-5 pb-4 pt-12">
                     <p className="font-display text-lg font-semibold">David Lawal</p>
                     <p className="text-xs uppercase tracking-[2px] text-mint">Frontend Engineer</p>
                   </div>

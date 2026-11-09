@@ -139,7 +139,7 @@ function RepoCard({ p }) {
       whileHover={{ y: -4 }}
       className="card group relative flex flex-col gap-2 overflow-hidden p-5"
     >
-      <span className="absolute inset-x-0 top-0 z-10 h-[2px] bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
+      <span className="absolute inset-x-0 top-0 z-10 h-0.5 bg-grad opacity-0 transition-opacity group-hover:opacity-100" />
 
       <div className="-mx-5 -mt-5 mb-1 aspect-video overflow-hidden border-b border-line">
         <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]">

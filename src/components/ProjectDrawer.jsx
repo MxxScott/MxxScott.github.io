@@ -140,7 +140,7 @@ function DrawerInner({ project, onClose }) {
             }}
           >
             {/* top accent line */}
-            <div className="h-[3px] w-full bg-grad" />
+            <div className="h-0.75 w-full bg-grad" />
 
             <div className="px-7 py-6">
               {/* close */}
